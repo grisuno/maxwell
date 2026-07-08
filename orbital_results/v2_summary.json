@@ -1,0 +1,407 @@
+{
+  "experiment": "Magnetic Orbital Isomorphism V2",
+  "model_info": {
+    "status": "loaded",
+    "path": "checkpoints_maxwell_phase3/latest.pth",
+    "epoch": 1764,
+    "delta": 0.4193245470523834,
+    "alpha": 0.869110083346137
+  },
+  "timestamp": "2026-03-15T01:47:33.097270",
+  "orbitals_analyzed": 10,
+  "per_orbital": [
+    {
+      "label": "1s",
+      "n": 1,
+      "l": 0,
+      "m": 0,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 0.9848626988459452,
+            "node_overlap": 0.8688524590160374,
+            "symmetry_correlation": 0.9753663851363408
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 0.3521854409155206,
+            "node_overlap": 0.0163934426229441,
+            "symmetry_correlation": 0.4046299243587267
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 0.13533590542240512,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.13986455600421685
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 0.04485798619967751,
+            "node_overlap": 0.19433198380558936,
+            "symmetry_correlation": 0.5906751759822683
+          }
+        }
+      }
+    },
+    {
+      "label": "2s",
+      "n": 2,
+      "l": 0,
+      "m": 0,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 0.43642349256911495,
+            "node_overlap": 0.946428571428149,
+            "symmetry_correlation": 0.7844153845203168
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 0.6383182396902924,
+            "node_overlap": 0.017857142857134887,
+            "symmetry_correlation": 0.7324161576743904
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 0.2582271686358246,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.3029642282691612
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 0.09338054721660552,
+            "node_overlap": 0.19565217391295842,
+            "symmetry_correlation": 0.6098395527792891
+          }
+        }
+      }
+    },
+    {
+      "label": "2p_m0",
+      "n": 2,
+      "l": 1,
+      "m": 0,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 3.960434077036483e-15,
+            "node_overlap": 0.9374999999996338,
+            "symmetry_correlation": 0.9666337931185499
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 2.6599714671540796e-15,
+            "node_overlap": 0.09374999999996339,
+            "symmetry_correlation": 0.6654009188181014
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 7.80171144147263e-16,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.19812031976265823
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 2.7704365052462267e-16,
+            "node_overlap": 0.23828124999990694,
+            "symmetry_correlation": 0.6061658378379823
+          }
+        }
+      }
+    },
+    {
+      "label": "2p_m1",
+      "n": 2,
+      "l": 1,
+      "m": 1,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 0.9457918862477128,
+            "node_overlap": 0.9830508474572106,
+            "symmetry_correlation": 0.9330409326284861
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 0.0,
+            "node_overlap": 0.9062499999996461,
+            "symmetry_correlation": 0.0
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 0.18454204512419992,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.1881232857915382
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 0.1915543076898369,
+            "node_overlap": 0.08189655172410264,
+            "symmetry_correlation": 0.3419666763770136
+          }
+        }
+      }
+    },
+    {
+      "label": "2p_m-1",
+      "n": 2,
+      "l": 1,
+      "m": -1,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 0.9457918819080636,
+            "node_overlap": 0.9830508474572106,
+            "symmetry_correlation": 0.933583671188308
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 0.0,
+            "node_overlap": 0.9062499999996461,
+            "symmetry_correlation": 0.0
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 0.18454431687377648,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.18801107315538884
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 0.07080854423098717,
+            "node_overlap": 0.11965811965806852,
+            "symmetry_correlation": 0.34847014574617424
+          }
+        }
+      }
+    },
+    {
+      "label": "3s",
+      "n": 3,
+      "l": 0,
+      "m": 0,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 0.9554988447714751,
+            "node_overlap": 0.9999999999995284,
+            "symmetry_correlation": 0.9244310306108475
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 0.6314636275440654,
+            "node_overlap": 0.018867924528292987,
+            "symmetry_correlation": 0.7160829318385646
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 0.26088490279344123,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.2908115479823326
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 0.09819584711420523,
+            "node_overlap": 0.17937219730933662,
+            "symmetry_correlation": 0.6912555278891338
+          }
+        }
+      }
+    },
+    {
+      "label": "3p_m0",
+      "n": 3,
+      "l": 1,
+      "m": 0,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 2.2830310865430547e-16,
+            "node_overlap": 0.9374999999996338,
+            "symmetry_correlation": 0.7594778176438421
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 2.783049085124877e-16,
+            "node_overlap": 0.09374999999996339,
+            "symmetry_correlation": 0.8665973467534948
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 9.575404502049213e-17,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.3006420008169107
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 3.772847840643528e-17,
+            "node_overlap": 0.23828124999990694,
+            "symmetry_correlation": 0.6156315869425472
+          }
+        }
+      }
+    },
+    {
+      "label": "3d_m0",
+      "n": 3,
+      "l": 2,
+      "m": 0,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 0.9709703603427393,
+            "node_overlap": 0.9655172413788943,
+            "symmetry_correlation": 0.968855232602066
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 0.7971846257306354,
+            "node_overlap": 0.10714285714280931,
+            "symmetry_correlation": 0.8040338974901466
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 0.2546598345230244,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.26072527411052665
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 0.27154049159857463,
+            "node_overlap": 0.03124999999998605,
+            "symmetry_correlation": 0.44549938964401115
+          }
+        }
+      }
+    },
+    {
+      "label": "3d_m1",
+      "n": 3,
+      "l": 2,
+      "m": 1,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 9.244473379429532e-16,
+            "node_overlap": 0.92187499999964,
+            "symmetry_correlation": 0.8875617649715891
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 7.859893046899521e-16,
+            "node_overlap": 0.5156249999997986,
+            "symmetry_correlation": 0.8281550188814882
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 2.613923410386672e-16,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.23770611103683853
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 2.505916344238855e-16,
+            "node_overlap": 0.03906249999998474,
+            "symmetry_correlation": 0.4091334552823553
+          }
+        }
+      }
+    },
+    {
+      "label": "3d_m2",
+      "n": 3,
+      "l": 2,
+      "m": 2,
+      "strategies": {
+        "Analytical": {
+          "metrics": {
+            "spatial_correlation": 0.636067333972068,
+            "node_overlap": 0.9107142857138792,
+            "symmetry_correlation": 0.7332043177135837
+          }
+        },
+        "Poisson": {
+          "metrics": {
+            "spatial_correlation": 0.7464517306159112,
+            "node_overlap": 0.16071428571421398,
+            "symmetry_correlation": 0.6356874025791677
+          }
+        },
+        "FullNetwork": {
+          "metrics": {
+            "spatial_correlation": 0.20984188913421406,
+            "node_overlap": 0.0,
+            "symmetry_correlation": 0.2578458161222392
+          }
+        },
+        "DirectSpectral": {
+          "metrics": {
+            "spatial_correlation": 0.1180051763249374,
+            "node_overlap": 0.013333333333327408,
+            "symmetry_correlation": 0.3476859928831566
+          }
+        }
+      }
+    }
+  ],
+  "aggregate_by_strategy": {
+    "Analytical": {
+      "mean_corr": 0.5875406498657124,
+      "max_corr": 0.9848626988459452,
+      "min_corr": 2.2830310865430547e-16,
+      "std_corr": 0.41925738638017773
+    },
+    "DirectSpectral": {
+      "mean_corr": 0.08883429003748249,
+      "max_corr": 0.27154049159857463,
+      "min_corr": 3.772847840643528e-17,
+      "std_corr": 0.08415797169485693
+    },
+    "FullNetwork": {
+      "mean_corr": 0.1488036062506887,
+      "max_corr": 0.26088490279344123,
+      "min_corr": 9.575404502049213e-17,
+      "std_corr": 0.10422595605479523
+    },
+    "Poisson": {
+      "mean_corr": 0.3165603664496429,
+      "max_corr": 0.7971846257306354,
+      "min_corr": 0.0,
+      "std_corr": 0.33478648873554373
+    }
+  },
+  "p_orbitals_by_strategy": {
+    "Analytical": 0.4728959420389452,
+    "DirectSpectral": 0.06559071298020609,
+    "FullNetwork": 0.09227159049949432,
+    "Poisson": 7.345690939166418e-16
+  },
+  "interpretation": "ANALYTICAL: Moderate isomorphism (mean=0.588). POISSON: Moderate (mean=0.317). Electrostatic evolution partially distorts the angular structure. NETWORK: Destroyed (mean=0.149). input_proj collapse is the bottleneck. DIRECT SPECTRAL: 0.089. Spectral kernels also distort structure."
+}

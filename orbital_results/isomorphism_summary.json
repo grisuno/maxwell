@@ -1,0 +1,215 @@
+{
+  "experiment": "Magnetic Orbital Isomorphism (Corrected)",
+  "fixes": [
+    "theta=pi/2",
+    "analytical dipole",
+    "multi-angle Hall",
+    "multipole hierarchy"
+  ],
+  "model_info": {
+    "status": "loaded",
+    "path": "checkpoints_maxwell_phase3/latest.pth",
+    "epoch": 1691,
+    "delta": 0.4243822395801544,
+    "alpha": 0.8571207211854605
+  },
+  "timestamp": "2026-03-15T01:20:23.212252",
+  "orbitals": 10,
+  "per_orbital": [
+    {
+      "label": "1s",
+      "n": 1,
+      "l": 0,
+      "m": 0,
+      "analytical_metrics": {
+        "spatial_correlation": 0.9848626988459452,
+        "node_overlap": 0.8688524590160374,
+        "symmetry_correlation": 0.9753663851363408,
+        "kl_divergence": 0.2893593900363241
+      },
+      "network_metrics": {
+        "spatial_correlation": 0.1353386115993948,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.13986430526086727,
+        "kl_divergence": 3.8047120300454766
+      }
+    },
+    {
+      "label": "2s",
+      "n": 2,
+      "l": 0,
+      "m": 0,
+      "analytical_metrics": {
+        "spatial_correlation": 0.43642349256911495,
+        "node_overlap": 0.946428571428149,
+        "symmetry_correlation": 0.7844153845203168,
+        "kl_divergence": 0.7881778235793906
+      },
+      "network_metrics": {
+        "spatial_correlation": 0.25823252849595213,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.3029634587282345,
+        "kl_divergence": 2.440804821042672
+      }
+    },
+    {
+      "label": "2p_m0",
+      "n": 2,
+      "l": 1,
+      "m": 0,
+      "analytical_metrics": {
+        "spatial_correlation": 3.960434077036483e-15,
+        "node_overlap": 0.9374999999996338,
+        "symmetry_correlation": 0.9666337931185499,
+        "kl_divergence": -3.2032240129508063e-07
+      },
+      "network_metrics": {
+        "spatial_correlation": 7.801826968301028e-16,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.1981203459043786,
+        "kl_divergence": -4.475052419704792e-07
+      }
+    },
+    {
+      "label": "2p_m1",
+      "n": 2,
+      "l": 1,
+      "m": 1,
+      "analytical_metrics": {
+        "spatial_correlation": 0.9457918862477128,
+        "node_overlap": 0.9830508474572106,
+        "symmetry_correlation": 0.9330409326284861,
+        "kl_divergence": 0.2298828508526652
+      },
+      "network_metrics": {
+        "spatial_correlation": 0.18454372656329182,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.18812181685157534,
+        "kl_divergence": 3.09178993951914
+      }
+    },
+    {
+      "label": "2p_m-1",
+      "n": 2,
+      "l": 1,
+      "m": -1,
+      "analytical_metrics": {
+        "spatial_correlation": 0.9457918819080636,
+        "node_overlap": 0.9830508474572106,
+        "symmetry_correlation": 0.933583671188308,
+        "kl_divergence": 0.22988280502700836
+      },
+      "network_metrics": {
+        "spatial_correlation": 0.1845464494799392,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.18801004062321958,
+        "kl_divergence": 3.091775280544957
+      }
+    },
+    {
+      "label": "3s",
+      "n": 3,
+      "l": 0,
+      "m": 0,
+      "analytical_metrics": {
+        "spatial_correlation": 0.9554988447714751,
+        "node_overlap": 0.9999999999995284,
+        "symmetry_correlation": 0.9244310306108475,
+        "kl_divergence": 0.22403400721754943
+      },
+      "network_metrics": {
+        "spatial_correlation": 0.26088937079461516,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.2908108141471236,
+        "kl_divergence": 2.2853219514604177
+      }
+    },
+    {
+      "label": "3p_m0",
+      "n": 3,
+      "l": 1,
+      "m": 0,
+      "analytical_metrics": {
+        "spatial_correlation": 2.2830310865430547e-16,
+        "node_overlap": 0.9374999999996338,
+        "symmetry_correlation": 0.7594778176438421,
+        "kl_divergence": -3.2032240129508063e-07
+      },
+      "network_metrics": {
+        "spatial_correlation": 9.57550945519949e-17,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.30064151318099136,
+        "kl_divergence": -4.475052419704792e-07
+      }
+    },
+    {
+      "label": "3d_m0",
+      "n": 3,
+      "l": 2,
+      "m": 0,
+      "analytical_metrics": {
+        "spatial_correlation": 0.9709703603427393,
+        "node_overlap": 0.9655172413788943,
+        "symmetry_correlation": 0.968855232602066,
+        "kl_divergence": 0.1195041521901485
+      },
+      "network_metrics": {
+        "spatial_correlation": 0.2546584032400907,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.2607238080241049,
+        "kl_divergence": 2.5206301859351075
+      }
+    },
+    {
+      "label": "3d_m1",
+      "n": 3,
+      "l": 2,
+      "m": 1,
+      "analytical_metrics": {
+        "spatial_correlation": 9.244473379429532e-16,
+        "node_overlap": 0.92187499999964,
+        "symmetry_correlation": 0.8875617649715891,
+        "kl_divergence": -2.9301949328428583e-07
+      },
+      "network_metrics": {
+        "spatial_correlation": 2.6139441129023944e-16,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.2377062124390636,
+        "kl_divergence": -4.47505241528632e-07
+      }
+    },
+    {
+      "label": "3d_m2",
+      "n": 3,
+      "l": 2,
+      "m": 2,
+      "analytical_metrics": {
+        "spatial_correlation": 0.636067333972068,
+        "node_overlap": 0.9107142857138792,
+        "symmetry_correlation": 0.7332043177135837,
+        "kl_divergence": 0.7073599625406086
+      },
+      "network_metrics": {
+        "spatial_correlation": 0.2098418390067659,
+        "node_overlap": 0.0,
+        "symmetry_correlation": 0.25784508516653964,
+        "kl_divergence": 2.906039653259208
+      }
+    }
+  ],
+  "analytical": {
+    "mean": 0.5875406498657124,
+    "max": 0.9848626988459452,
+    "best": "1s"
+  },
+  "network": {
+    "mean": 0.1488050929180051,
+    "max": 0.26088937079461516,
+    "best": "3s"
+  },
+  "p_orbitals": {
+    "analytical": 0.4728959420389452,
+    "network": 0.09227254401080798
+  },
+  "interpretation": "ANALYTICAL CONTROL: Moderate p-orbital isomorphism. NETWORK: Isomorphism destroyed by network transformation at current training stage."
+}

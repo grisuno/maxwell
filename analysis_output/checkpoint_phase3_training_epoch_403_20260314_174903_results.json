@@ -1,0 +1,142 @@
+{
+  "metadata": {
+    "checkpoint_path": "checkpoints_maxwell_phase3/checkpoint_phase3_training_epoch_403_20260314_174903.pth",
+    "epoch": 403,
+    "timestamp": "2026-03-14T18:34:05.945155"
+  },
+  "hawking": {
+    "constants": {
+      "G_alg": {
+        "G_alg": 27.339085822004837,
+        "avg_distance": 0.051782190799713135,
+        "force": 27.339085822004837,
+        "crystallization_pressure": 0.16145751998654123,
+        "delta": 0.4540320932865143,
+        "is_crystallized": false
+      },
+      "h_bar": {
+        "h_bar_uncertainty": 3.246045369745759e-05,
+        "h_bar_action": 708.1040473113253,
+        "h_bar_conductance": 1.8316094916999988,
+        "h_bar_information": 33.44521823924959,
+        "h_bar_unified": 185.84522687568213,
+        "lambda_eff": 7.87320366233077e-05,
+        "ratio_to_si_planck": 1.7622813722100647e+36,
+        "is_quantum_regime": "False"
+      },
+      "k_B": {
+        "k_b_entropy": 2.744953425566328,
+        "k_b_thermal": 0.005373898893594742,
+        "k_b_unified": 1.3751636743545532,
+        "config_entropy": 2.744953425566328,
+        "energy_proxy": 1.0,
+        "weight_variance": 0.005373898893594742
+      },
+      "c_eff": {
+        "c_from_planck": 5.283186642624682e+44,
+        "c_spectral": 1.7782955169677734,
+        "c_unified": 5.283186642624682e+44,
+        "ratio_to_si_c": 1.7622813722100647e+36
+      },
+      "M_eff": {
+        "m_planck_eff": 5.9928262771398465e+22,
+        "m_from_info": 5400572.3418976,
+        "m_from_energy": 1.9252971690240535e-92,
+        "m_unified": 5.9928262771398465e+22,
+        "n_active_params": 1967455,
+        "n_total_params": 2363910,
+        "sparsity": 0.16771154570182456,
+        "information_content": 2.744953425566328
+      },
+      "A_eff": {
+        "a_unified": 1967455.0,
+        "a_from_entropy": 733.053955078125,
+        "active_params": 1967455
+      }
+    },
+    "hawking": {
+      "S_BH": 1.9631417949419885e+136,
+      "T_H": 4.83982149525549e+110,
+      "r_schwarzschild": 1.173961258649939e-65,
+      "P_radiation": 3.120000697594725e+217,
+      "tau_evaporation": 1.7870950407479927e-106,
+      "surface_gravity": 1.1887982203478701e+154,
+      "tidal_force": 6.180714803321882e+194,
+      "info_escape_rate": 4.687820299734214e+106
+    },
+    "diagnostics": {
+      "delta": 0.4540320932865143,
+      "crystallization_state": "glass",
+      "is_evaporating": true,
+      "temperature_regime": "hot"
+    }
+  },
+  "maxwell": {
+    "potential": {
+      "max_potential": 22017595567.160847,
+      "mean_potential": -269492775.66628075,
+      "potential_variance": 2.8244998542867132e+19
+    },
+    "electric_field": {
+      "max_E": 13953449001.601027,
+      "mean_E": 3620344954.0860767,
+      "E_variance": 3.1707972915871565e+18
+    },
+    "dielectric": {
+      "dielectric_eigenvalues": [
+        33.786491958690526,
+        35.64615091939729,
+        41.19827284747092
+      ],
+      "anisotropy_ratio": 0.06699556665667253,
+      "mean_permittivity": 0.9976195903873304,
+      "variance_permittivity": 0.01257436173731867,
+      "is_isotropic": "True"
+    },
+    "scattering": {
+      "peak_count": 20,
+      "prominence": 9.465645558979354,
+      "is_bragg_pattern": true
+    },
+    "photonic_entropy": {
+      "field_entropy": 2.0091506295329102,
+      "mode_entropy": 7.8809740387863325,
+      "total_photonic_entropy": 9.890124668319242
+    },
+    "bandgap": {
+      "radial_profile": [
+        0.0,
+        43.074104679004755,
+        61.44139838911109,
+        59.23811810971128,
+        57.27143826546561,
+        54.44625361192215,
+        50.43659946027687,
+        49.51011353081912,
+        48.46353423637672,
+        48.72770522526744,
+        52.336194716886006,
+        51.02569884336796,
+        63.019150254506194,
+        165.35417616346402
+      ],
+      "has_bandgap": false,
+      "gap_depth": 0.7010599662160102
+    },
+    "purity": {
+      "delta": 0.4540320932865143,
+      "alpha": 0.7895873933808099
+    },
+    "classification": {
+      "phase": "EM_Glass",
+      "is_crystal": false,
+      "confidence": 0.4,
+      "criteria": {
+        "high_alpha": "False",
+        "high_anisotropy": false,
+        "bragg_peaks": true,
+        "low_entropy": false
+      }
+    }
+  }
+}

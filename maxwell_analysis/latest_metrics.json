@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "checkpoint_path": "checkpoints_maxwell_phase3/latest.pth",
+    "epoch": 453,
+    "timestamp": "2026-03-14T18:12:53.500100",
+    "analysis_duration_seconds": 54.55062389373779
+  },
+  "checkpoint_metrics": {
+    "val_acc": 1.0,
+    "train_acc": 1.0,
+    "val_loss": 0.0006511150277219713,
+    "train_loss": 0.006011811662780877,
+    "lambda_pressure": 1.0
+  },
+  "weight_integrity": {
+    "is_valid": true,
+    "has_nan": false,
+    "has_inf": false,
+    "total_params": 2363910,
+    "nan_count": 0,
+    "inf_count": 0,
+    "corruption_ratio": 0.0
+  },
+  "discretization": {
+    "delta": 0.4533618688583374,
+    "alpha": 0.7910646446695533,
+    "spectral_entropy": 7.137636661529541,
+    "is_discrete": false,
+    "layer_deltas": {
+      "input_proj.weight": 0.400560587644577,
+      "input_proj.bias": 0.400415301322937,
+      "expansion_proj.weight": 0.17518869042396545,
+      "expansion_proj.bias": 0.17169030010700226,
+      "spectral_layers.0.kernel_real": 0.4533618688583374,
+      "spectral_layers.0.kernel_imag": 0.14634564518928528,
+      "spectral_layers.1.kernel_real": 0.44759896397590637,
+      "spectral_layers.1.kernel_imag": 0.15035384893417358,
+      "contraction_proj.weight": 0.12366768717765808,
+      "contraction_proj.bias": 0.12110774964094162,
+      "output_proj.weight": 0.1755170077085495,
+      "output_proj.bias": 0.03125714138150215
+    }
+  },
+  "spectral_geometry": {
+    "spectral_gap": 0.01561784278601408,
+    "effective_dimension": 1001,
+    "participation_ratio": 1.0000247955322266,
+    "level_spacing_ratio": 0.5421093702316284,
+    "largest_eigenvalue": 0.015617847442626953,
+    "smallest_eigenvalue": -4.679038489996401e-09
+  },
+  "ricci_curvature": {
+    "ricci_scalar": 8541532994928640.0,
+    "mean_sectional_curvature": 0.0,
+    "curvature_variance": 0.0
+  },
+  "control_theory": {
+    "system_dimension": 19,
+    "stability_analysis": {
+      "is_stable": false,
+      "stability_margin": -0.13923621049149837,
+      "eigenvalues": [
+        "(0.011260909476166335+0.20741713738582018j)",
+        "(0.011260909476166335-0.20741713738582018j)",
+        "(0.13923621049149837+0j)",
+        "(0.11958336804429692+0.0640343645691255j)",
+        "(0.11958336804429692-0.0640343645691255j)",
+        "(-0.011566289757960261+0.11242917069709567j)",
+        "(-0.011566289757960261-0.11242917069709567j)",
+        "(0.05887742439923964+0.08264862261017544j)",
+        "(0.05887742439923964-0.08264862261017544j)",
+        "(0.08953229410894634+0.026093841901321062j)"
+      ],
+      "dominant_pole": "(0.13923621049149837+0j)"
+    }
+  },
+  "topological": {
+    "topo_R_cm_x": -0.18790391087532043,
+    "topo_R_cm_y": -0.21646557748317719,
+    "topo_phase_state": 0.0,
+    "topo_is_crystalline": 0.0,
+    "topo_alignment_score": 0.0,
+    "topo_resonance_score": 0.03652000427246094,
+    "topo_spectral_concentration": 0.03652000427246094
+  },
+  "schrodinger": {
+    "wavefunction_entropy": 5.572518348693848,
+    "participation_ratio": 188.4089780742043,
+    "quantum_coherence": 4820870.990234375,
+    "compressed_dimension": 512
+  },
+  "goe_gue": {
+    "p_s_loss_goe": Infinity,
+    "p_s_loss_gue": Infinity,
+    "r2_loss_goe": Infinity,
+    "r2_loss_gue": Infinity,
+    "beta_estimate": 1.5,
+    "ensemble_ratio": 1.0,
+    "dominant_ensemble": "Unknown",
+    "global_kernel_ratio": 0.0,
+    "imaginary_ratio": 0.0,
+    "per_layer_kernel_ratios": [],
+    "universality_interpolation": 0.5,
+    "beta_distance_goe": 0.5,
+    "beta_distance_gue": 0.5,
+    "num_operators_analyzed": 0,
+    "total_eigenvalues": 0,
+    "total_spacings": 0
+  },
+  "gradient_dynamics": {
+    "kappa": Infinity,
+    "effective_temperature": 0.0,
+    "gradient_variance": 0.0
+  },
+  "thermodynamics": {
+    "gibbs_free_energy": 0.4533618688583374,
+    "entropy_proxy": -0.7910646446695533,
+    "critical_temperature_estimate": 0.0006733215197499167,
+    "effective_temperature": 0.0,
+    "phase_stability": "stable",
+    "phase_type": "Cold Glass"
+  },
+  "health_score": 0.27825230873819834
+}

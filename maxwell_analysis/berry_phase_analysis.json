@@ -1,0 +1,19 @@
+{
+  "total_berry_phase": -4.818124788030786e-10,
+  "berry_phase_mod_2pi": -4.81812811869986e-10,
+  "winding_number": 0,
+  "num_checkpoints": 11,
+  "epochs": [
+    0,
+    328,
+    343,
+    358,
+    373,
+    388,
+    403,
+    418,
+    433,
+    448,
+    453
+  ]
+}
