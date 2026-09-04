@@ -94,3 +94,11 @@ AGPL v3. See LICENSE.
 ---
 
 grisun0
+
+
+---
+### Related Physics and Mathematics Projects
+Exploring fundamental patterns and equations:
+- [schrodinger](https://github.com/grisuno/schrodinger): Quantum mechanics and waves.
+- [dirac](https://github.com/grisuno/dirac): Relativistic electromagnetism.
+- [algebra-de-grok](https://github.com/grisuno/algebra-de-grok): Algebra applied to physical equations.
