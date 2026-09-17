@@ -1,0 +1,23 @@
+{
+  "tool": "readmenator",
+  "generated_at": "2026-09-17T05:28:27Z",
+  "project_root": "/tmp/push_maxwell_20260917_010128",
+  "files": 8,
+  "symbols": 556,
+  "imports": 4555,
+  "resolved_imports": 0,
+  "security_findings": 0,
+  "languages": {
+    "py": 7,
+    "sh": 1
+  },
+  "entrypoints": [],
+  "start_here": "INDEX.md",
+  "workflow": [
+    "ls *.md readmenator-*/  # orient: docs first, ignore build noise",
+    "grep -n '<keyword>' INDEX.md",
+    "cat KB_<subsystem>.md",
+    "grep -n '<file>' ARCHITECTURE.md SYMBOLS.md"
+  ],
+  "regenerate": "readmenator . --rebuild"
+}
