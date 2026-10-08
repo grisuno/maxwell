@@ -1,0 +1,658 @@
+{
+  "concepts": [
+    {
+      "name": "spectral",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 100,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "compute",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 97,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "return",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 71,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "maxwell",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 59,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "all",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 53,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "config",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 41,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "layer",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 39,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "network",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 37,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "field",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 34,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "imaginary",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 33,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "calculator",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 32,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "real",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 28,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "forward",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 26,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "run",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 26,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "logger",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 25,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "fourier",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 22,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "model",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 21,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "load",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 19,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "apply",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 16,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "create",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 16,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "generate",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 16,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "configuration",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 14,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "get",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 14,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "space",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 14,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "multi",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 13,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "neural",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 13,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "convolution",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 12,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "factory",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 12,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "configured",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 11,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "gradient",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 11,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "equation",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 10,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "dynamics",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 8,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "arguments",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 7,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "creating",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 7,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "learning",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 7,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "parse",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 7,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "com",
+      "files": [
+        "app.py",
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 6,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "gmail",
+      "files": [
+        "app.py",
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 6,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "gris",
+      "files": [
+        "app.py",
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 6,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "grisiscomeback",
+      "files": [
+        "app.py",
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 6,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "iscomeback",
+      "files": [
+        "app.py",
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 6,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "ratio",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 43,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "store",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 42,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "reference",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 37,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "initialise",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 32,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "checkpoint",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py"
+      ],
+      "mentions": 30,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "full",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py"
+      ],
+      "mentions": 29,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "analytical",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_magnetic_orbitals.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 27,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "kernel",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 26,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "sub",
+      "files": [
+        "maxwell_crystal.py",
+        "maxwell_crystallography_suite.py",
+        "maxwell_field_hawking_suite.py",
+        "maxwell_magnetic_orbitals_v2.py",
+        "maxwell_orbital_diagnostic.py"
+      ],
+      "mentions": 23,
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "relations": [],
+  "dialectic": [
+    "Thesis: `all` centralizes 6 files; Antithesis: `analytical` pulls 5 files with 5 shared (Jaccard 0.83); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `apply` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `arguments` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `calculator` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `checkpoint` pulls 5 files with 5 shared (Jaccard 0.83); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `com` pulls 6 files with 5 shared (Jaccard 0.71); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `compute` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `config` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `configuration` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `configured` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
+  ]
+}
