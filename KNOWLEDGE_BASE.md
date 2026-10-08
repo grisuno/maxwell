@@ -11,7 +11,7 @@
 
 **Total Files Parsed:** 8 | **Total Symbols Extracted:** 556 | **Total Imports:** 137
 
-<!-- ranking_model: v1.0 | weights: {ppr:0.45,auth:0.2,test:0.15,doc:0.1,fresh:0.1} | alpha:0.85 | commit:1e0fd0b | date:2026-07-18 -->
+<!-- ranking_model: v1.0 | weights: {ppr:0.45,auth:0.2,test:0.15,doc:0.1,fresh:0.1} | alpha:0.85 | commit:05a4468 | date:2026-07-18 -->
 
 
 ## Table of Contents
@@ -24,13 +24,12 @@
 6. [Hotspot Analysis](#hotspot-analysis)
 7. [Change Impact Analysis](#change-impact-analysis)
 8. [Suggested Linting Rules](#suggested-linting-rules)
-9. [Concept Graph](#concept-graph)
-10. [Orphans](#orphans)
-11. [Query Recipes](#query-recipes)
-12. [Structural Knowledge Map](#structural-knowledge-map)
-13. [UML Class Diagram](#uml-class-diagram)
-14. [Code Property Graph](#code-property-graph)
-15. [Architecture Reference](#architecture-reference)
+9. [Orphans](#orphans)
+10. [Query Recipes](#query-recipes)
+11. [Structural Knowledge Map](#structural-knowledge-map)
+12. [UML Class Diagram](#uml-class-diagram)
+13. [Code Property Graph](#code-property-graph)
+14. [Architecture Reference](#architecture-reference)
     - [PY (7 files)](#py-7-files)
     - [SH (1 files)](#sh-1-files)
 
@@ -68,17 +67,25 @@ Auto-detected from path patterns, naming conventions, and imported frameworks.
 
 | Layer | Files |
 |-------|-------|
-| utility | 8 |
+| utility | 5 |
+| presentation | 2 |
+| infrastructure | 1 |
 
 ### utility
 
 - `app.py` (py, 0 symbols)
 - `install.sh` (sh, 0 symbols)
 - `maxwell_crystal.py` (py, 188 symbols)
-- `maxwell_crystallography_suite.py` (py, 123 symbols)
-- `maxwell_field_hawking_suite.py` (py, 99 symbols)
 - `maxwell_magnetic_orbitals.py` (py, 47 symbols)
 - `maxwell_magnetic_orbitals_v2.py` (py, 50 symbols)
+
+### presentation
+
+- `maxwell_crystallography_suite.py` (py, 123 symbols)
+- `maxwell_field_hawking_suite.py` (py, 99 symbols)
+
+### infrastructure
+
 - `maxwell_orbital_diagnostic.py` (py, 49 symbols)
 
 ---
@@ -143,60 +150,6 @@ Files ranked by combined complexity (symbol count) and centrality (connection co
 | `maxwell_field_hawking_suite.py` | 0.527 | 0.844 | 0.717 | 99 | 27 |
 | `maxwell_magnetic_orbitals.py` | 0.250 | 0.625 | 0.475 | 47 | 20 |
 | `install.sh` | 0.000 | 0.000 | 0.000 | 0 | 0 |
-
----
-
-## Concept Graph
-
-Semantic second-brain layer: nouns are concept nodes, verbs are edges. Each noun maps atomically to a file set (EXTRACTED); each verb aggregates structural imports, calls, and inherits into consumes, invokes, extends, depends_on, or bridges (INFERRED).
-
-**50 concepts, 0 relations.**
-
-| Concept | Files | Mentions |
-|---------|-------|----------|
-| `spectral` | 6 | 100 |
-| `compute` | 6 | 97 |
-| `return` | 6 | 71 |
-| `maxwell` | 6 | 59 |
-| `all` | 6 | 53 |
-| `config` | 6 | 41 |
-| `layer` | 6 | 39 |
-| `network` | 6 | 37 |
-| `field` | 6 | 34 |
-| `imaginary` | 6 | 33 |
-| `calculator` | 6 | 32 |
-| `real` | 6 | 28 |
-| `forward` | 6 | 26 |
-| `run` | 6 | 26 |
-| `logger` | 6 | 25 |
-| `fourier` | 6 | 22 |
-| `model` | 6 | 21 |
-| `load` | 6 | 19 |
-| `apply` | 6 | 16 |
-| `create` | 6 | 16 |
-| `generate` | 6 | 16 |
-| `configuration` | 6 | 14 |
-| `get` | 6 | 14 |
-| `space` | 6 | 14 |
-| `multi` | 6 | 13 |
-| `neural` | 6 | 13 |
-| `convolution` | 6 | 12 |
-| `factory` | 6 | 12 |
-| `configured` | 6 | 11 |
-| `gradient` | 6 | 11 |
-
-### Dialectic Prompts
-
-- Thesis: `all` centralizes 6 files; Antithesis: `analytical` pulls 5 files with 5 shared (Jaccard 0.83); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `apply` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `arguments` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `calculator` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `checkpoint` pulls 5 files with 5 shared (Jaccard 0.83); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `com` pulls 6 files with 5 shared (Jaccard 0.71); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `compute` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `config` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `configuration` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `all` centralizes 6 files; Antithesis: `configured` pulls 6 files with 6 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 
 ---
 
