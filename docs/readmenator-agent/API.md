@@ -1,0 +1,345 @@
+# API
+
+## maxwell_crystal.py
+- `IPhaseDetector.detect` (method) `maxwell_crystal.py:261` `def detect(self, spectral_field)` -- Detect phase characteristics from spectral field data.
+- `IMetricCalculator.compute` (method) `maxwell_crystal.py:270` `def compute(self, model)` -- Compute metrics for the given model and optional keyword arguments.
+- `SeedManager.set_seed` (method) `maxwell_crystal.py:279` `def set_seed(seed, device)` -- Set random seeds across all relevant libraries and backends.
+- `LoggerFactory.create_logger` (method) `maxwell_crystal.py:294` `def create_logger(name, level)` -- Create and return a configured logger instance.
+- `MaxwellOperator.__init__` (method) `maxwell_crystal.py:321` `def __init__(self, config)` -- Precompute wavenumber grids and material constants.
+- `MaxwellOperator.apply_maxwell_operator` (method) `maxwell_crystal.py:339` `def apply_maxwell_operator(self, fields)` -- Apply the Maxwell curl operator to a (batch, 3, H, W) real tensor.
+- `MaxwellOperator.time_evolution` (method) `maxwell_crystal.py:371` `def time_evolution(self, fields, dt)` -- Advance electromagnetic fields by one time step using Euler integration with norm-preserving rescaling.
+- `SpectralStatisticsCalculator.__init__` (method) `maxwell_crystal.py:406` `def __init__(self, config)` -- Store reference to global configuration.
+- `SpectralStatisticsCalculator.generate_goe_matrix` (method) `maxwell_crystal.py:411` `def generate_goe_matrix(size, device)` -- Return a sample from the Gaussian Orthogonal Ensemble.
+- `SpectralStatisticsCalculator.generate_gue_matrix` (method) `maxwell_crystal.py:417` `def generate_gue_matrix(size, device)` -- Return a sample from the Gaussian Unitary Ensemble.
+- `SpectralStatisticsCalculator.generate_interpolated_matrix` (method) `maxwell_crystal.py:425` `def generate_interpolated_matrix(self, size, imaginary_ratio, device)` -- Return a complex Hermitian matrix interpolating between GOE and GUE.
+- `SpectralStatisticsCalculator.compute_eigenvalue_spacing` (method) `maxwell_crystal.py:443` `def compute_eigenvalue_spacing(self, eigenvalues)` -- Unfold eigenvalues via polynomial fit and return normalised spacings.
+- `SpectralStatisticsCalculator.compute_spacing_distribution_loss` (method) `maxwell_crystal.py:458` `def compute_spacing_distribution_loss(self, spacings, target)` -- MSE between the empirical P(s) histogram and the Wigner surmise.
+- `SpectralStatisticsCalculator.compute_dyson_index` (method) `maxwell_crystal.py:481` `def compute_dyson_index(self, eigenvalues, spacings)` -- Estimate Dyson beta from small-spacing power-law P(s) ~ s^beta.
+- `SpectralStatisticsCalculator.compute_pair_correlation` (method) `maxwell_crystal.py:506` `def compute_pair_correlation(self, eigenvalues, s_range, num_points)` -- Two-level correlation function R_2(s).
+- `SpectralStatisticsCalculator.compute_correlation_loss` (method) `maxwell_crystal.py:533` `def compute_correlation_loss(self, eigenvalues, target)` -- MSE between empirical R_2(s) and the analytical prediction.
+- `SpectralStatisticsCalculator.compute_spectral_stats_for_ratio` (method) `maxwell_crystal.py:552` `def compute_spectral_stats_for_ratio(self, imaginary_ratio, matrix_size, num_matrices, device)` -- Ensemble-averaged spectral statistics at a given imaginary ratio.
+- `SpectralLayer.__init__` (method) `maxwell_crystal.py:619` `def __init__(self, channels, grid_size, imaginary_ratio)` -- Initialise real and imaginary kernel parameters.
+- `SpectralLayer.set_imaginary_ratio` (method) `maxwell_crystal.py:643` `def set_imaginary_ratio(self, ratio)` -- Rescale imaginary kernel to reflect a new imaginary ratio.
+- `SpectralLayer.forward` (method) `maxwell_crystal.py:651` `def forward(self, x)` -- Apply spectral convolution in Fourier space.
+- `SpectralLayer.get_spectral_operator` (method) `maxwell_crystal.py:674` `def get_spectral_operator(self)` -- Extract a (channels x channels) complex matrix for eigenvalue analysis.
+- `MaxwellSpectralNetwork.__init__` (method) `maxwell_crystal.py:696` `def __init__(self, grid_size, hidden_dim, expansion_dim, num_spectral_layers, field_components, imaginary_ratio)` -- Build all sub-layers with the given architectural parameters.
+- `MaxwellSpectralNetwork.forward` (method) `maxwell_crystal.py:721` `def forward(self, x)` -- Forward pass through the full spectral network.
+- `MaxwellSpectralNetwork.set_imaginary_ratio` (method) `maxwell_crystal.py:732` `def set_imaginary_ratio(self, ratio)` -- Propagate imaginary ratio to all spectral layers.
+- `MaxwellSpectralNetwork.get_kernel_ratio` (method) `maxwell_crystal.py:738` `def get_kernel_ratio(self)` -- Compute the effective imaginary-to-real kernel norm ratio.
+- `HamiltonianBackbone.__init__` (method) `maxwell_crystal.py:752` `def __init__(self, grid_size, hidden_dim, num_spectral_layers)` -- Build the backbone with spectral layers.
+- `HamiltonianBackbone.forward` (method) `maxwell_crystal.py:768` `def forward(self, x)` -- Single-channel forward pass.
+- `HamiltonianInferenceEngine.__init__` (method) `maxwell_crystal.py:786` `def __init__(self, config)` -- Attempt backbone load; fall back to analytical operator.
+- `HamiltonianInferenceEngine.apply_operator` (method) `maxwell_crystal.py:829` `def apply_operator(self, fields)` -- Apply the Maxwell operator to the electromagnetic field tensor.
+- `HamiltonianInferenceEngine.time_evolve` (method) `maxwell_crystal.py:833` `def time_evolve(self, fields, dt)` -- Advance fields by one time step.
+- `MaxwellPotentialGenerator.__init__` (method) `maxwell_crystal.py:848` `def __init__(self, config)` -- Store grid parameters from configuration.
+- `MaxwellPotentialGenerator.gaussian_source` (method) `maxwell_crystal.py:853` `def gaussian_source(self)` -- Smooth Gaussian current-density envelope centred on the grid.
+- `MaxwellPotentialGenerator.dipole_source` (method) `maxwell_crystal.py:861` `def dipole_source(self)` -- 1/r dipole-like source envelope.
+- `MaxwellPotentialGenerator.plane_wave_source` (method) `maxwell_crystal.py:870` `def plane_wave_source(self)` -- Sinusoidal plane-wave seed for Ex, Ey components.
+- `MaxwellPotentialGenerator.periodic_medium` (method) `maxwell_crystal.py:879` `def periodic_medium(self)` -- Periodic permittivity modulation (photonic-crystal-like).
+- `MaxwellPotentialGenerator.generate_mixed_source` (method) `maxwell_crystal.py:886` `def generate_mixed_source(self, seed)` -- Dirichlet-weighted superposition of all source types.
+- `MaxwellDataset.__init__` (method) `maxwell_crystal.py:911` `def __init__(self, config, hamiltonian_engine, seed)` -- Generate all samples at construction time.
+- `MaxwellDataset.get_validation_batch` (method) `maxwell_crystal.py:1028` `def get_validation_batch(self)` -- Return the full validation set as a single batch.
+- `FullFourierAnalyzer.__init__` (method) `maxwell_crystal.py:1036` `def __init__(self, config)` -- Precompute wavenumber magnitude grid.
+- `FullFourierAnalyzer.compute_full_spectrum` (method) `maxwell_crystal.py:1045` `def compute_full_spectrum(self, spectral_field)` -- Return magnitude, phase, power, radial profile, and derived statistics.
+- `FullFourierAnalyzer.detect_bragg_peaks` (method) `maxwell_crystal.py:1098` `def detect_bragg_peaks(self, power_spectrum, threshold_sigma)` -- Identify local maxima in the power spectrum exceeding a statistical threshold.
+- `FullFourierAnalyzer.compute_resonance_metrics` (method) `maxwell_crystal.py:1146` `def compute_resonance_metrics(self, spectral_field)` -- Aggregate spectral concentration, phase coherence, and Bragg analysis.
+- `FourierMassCenterAnalyzer.__init__` (method) `maxwell_crystal.py:1186` `def __init__(self, config)` -- Initialise wavenumber grids and full Fourier sub-analyzer.
+- `FourierMassCenterAnalyzer.compute_mass_center` (method) `maxwell_crystal.py:1195` `def compute_mass_center(self, spectral_field)` -- Return centre of mass, inertia tensor, anisotropy, and resonance diagnostics.
+- `TopologicalPhaseDetector.__init__` (method) `maxwell_crystal.py:1250` `def __init__(self, config)` -- Initialise history buffers and state variables.
+- `TopologicalPhaseDetector.detect` (method) `maxwell_crystal.py:1258` `def detect(self, spectral_field)` -- Run full topological phase detection and return diagnostic dict.
+- `SpectralFieldExtractor.extract` (method) `maxwell_crystal.py:1316` `def extract(model, grid_size)` -- Return the mean complex spectral kernel across all spectral layers.
+- `TopologicalCrystallizationLoss.__init__` (method) `maxwell_crystal.py:1336` `def __init__(self, config)` -- Initialise with base lambda pressure.
+- `TopologicalCrystallizationLoss.forward` (method) `maxwell_crystal.py:1342` `def forward(self, phase_info, epoch)` -- Compute quadrant, localisation, and resonance penalty terms.
+- `CrystallizationPressureApplicator.__init__` (method) `maxwell_crystal.py:1368` `def __init__(self, config)` -- Store pressure decay rate from config.
+- `CrystallizationPressureApplicator.apply` (method) `maxwell_crystal.py:1373` `def apply(self, model, phase_info)` -- Multiplicatively decay parameters when crystal phase is detected.
+- `TopologicalMetricsCalculator.__init__` (method) `maxwell_crystal.py:1387` `def __init__(self, config)` -- Initialise all topological sub-components.
+- `TopologicalMetricsCalculator.compute` (method) `maxwell_crystal.py:1395` `def compute(self, model)` -- Extract spectral field, detect phase, compute loss, return full metrics dict.
+- `TopologicalMetricsCalculator.apply_crystallization_pressure` (method) `maxwell_crystal.py:1429` `def apply_crystallization_pressure(self, model, topo_metrics)` -- Delegate pressure application to the sub-component.
+- `LocalComplexityAnalyzer.compute_local_complexity` (method) `maxwell_crystal.py:1457` `def compute_local_complexity(weights, epsilon)` -- Return a scalar in [0, 1] measuring weight diversity.
+- `SuperpositionAnalyzer.compute_superposition` (method) `maxwell_crystal.py:1476` `def compute_superposition(weights)` -- Return the mean absolute off-diagonal Pearson correlation.
+- `CrystallographyMetricsCalculator.__init__` (method) `maxwell_crystal.py:1501` `def __init__(self, config)` -- Store config and create logger.
+- `CrystallographyMetricsCalculator.compute` (method) `maxwell_crystal.py:1506` `def compute(self, model)` -- Facade that delegates to compute_all_metrics.
+- `CrystallographyMetricsCalculator.compute_kappa` (method) `maxwell_crystal.py:1512` `def compute_kappa(self, model, val_x, val_y, num_batches)` -- Gradient covariance condition number kappa = lambda_max / lambda_min.
+- `CrystallographyMetricsCalculator.compute_discretization_margin` (method) `maxwell_crystal.py:1563` `def compute_discretization_margin(self, model)` -- delta = max_i |theta_i - round(theta_i)|.
+- `CrystallographyMetricsCalculator.compute_alpha_purity` (method) `maxwell_crystal.py:1572` `def compute_alpha_purity(self, model)` -- alpha = -log(delta).
+- `CrystallographyMetricsCalculator.compute_kappa_quantum` (method) `maxwell_crystal.py:1579` `def compute_kappa_quantum(self, model)` -- Quantum-regularised condition number with hbar regularisation.
+- `CrystallographyMetricsCalculator.compute_poynting_vector` (method) `maxwell_crystal.py:1601` `def compute_poynting_vector(self, model)` -- Compute the electromagnetic Poynting-like energy flow through the network.
+- `CrystallographyMetricsCalculator.compute_hbar_effective` (method) `maxwell_crystal.py:1651` `def compute_hbar_effective(self, model, lambda_pressure)` -- hbar_eff = delta^2 * lambda / omega.
+- `CrystallographyMetricsCalculator.compute_all_metrics` (method) `maxwell_crystal.py:1661` `def compute_all_metrics(self, model, val_x, val_y)` -- Compute delta, alpha, kappa, kappa_q, poynting, purity, and is_crystal.
+- `CrystallographyMetricsCalculator.safe_compute` (method) `maxwell_crystal.py:1672` `def safe_compute(func)`
+- `ThermodynamicMetricsCalculator.__init__` (method) `maxwell_crystal.py:1702` `def __init__(self, config)` -- Store config reference.
+- `ThermodynamicMetricsCalculator.compute` (method) `maxwell_crystal.py:1706` `def compute(self, model)` -- Return all thermodynamic observables.
+- `ThermodynamicMetricsCalculator.compute_effective_temperature` (method) `maxwell_crystal.py:1727` `def compute_effective_temperature(self, gradient_buffer, learning_rate)` -- T_eff = (lr / 2) * Var(grad).
+- `ThermodynamicMetricsCalculator.compute_specific_heat` (method) `maxwell_crystal.py:1750` `def compute_specific_heat(self, loss_history, temp_history)` -- C_v = Var(U) / T^2.
+- `ThermodynamicMetricsCalculator.compute_gibbs_free_energy` (method) `maxwell_crystal.py:1762` `def compute_gibbs_free_energy(self, delta, alpha, temperature)` -- G = delta - T * (-alpha).
+- `ThermodynamicMetricsCalculator.compute_critical_temperature` (method) `maxwell_crystal.py:1768` `def compute_critical_temperature(self, alpha)` -- T_c = T_0 * exp(-c * alpha).
+- `SpectralGeometryCalculator.__init__` (method) `maxwell_crystal.py:1776` `def __init__(self, config)` -- Store config reference.
+- `SpectralGeometryCalculator.compute` (method) `maxwell_crystal.py:1780` `def compute(self, model)` -- Compute spectral geometry observables from weight outer product.
+- `RicciCurvatureCalculator.__init__` (method) `maxwell_crystal.py:1822` `def __init__(self, config)` -- Store config reference.
+- `RicciCurvatureCalculator.compute` (method) `maxwell_crystal.py:1826` `def compute(self, model)` -- Compute Ricci scalar and sectional curvatures from weight metric.
+- `PerelmanRicciFlow.__init__` (method) `maxwell_crystal.py:1868` `def __init__(self, config)` -- Initialise curvature history and surgery counter.
+- `PerelmanRicciFlow.compute_ricci_scalar_fast` (method) `maxwell_crystal.py:1877` `def compute_ricci_scalar_fast(self, model)` -- Fast Ricci scalar estimate from normalised weight outer product.
+- `PerelmanRicciFlow.compute_local_curvature` (method) `maxwell_crystal.py:1907` `def compute_local_curvature(self, param)` -- Second-difference curvature estimate along the flattened parameter.
+- `PerelmanRicciFlow.compute_anisotropy` (method) `maxwell_crystal.py:1916` `def compute_anisotropy(self, model)` -- Ratio of smallest to largest covariance eigenvalue of the weight vector.
+- `PerelmanRicciFlow.compute_ricci_regularization_loss` (method) `maxwell_crystal.py:1941` `def compute_ricci_regularization_loss(self, model)` -- Smoothness penalty proportional to second-difference curvature.
+- `PerelmanRicciFlow.apply_ricci_flow_step` (method) `maxwell_crystal.py:1959` `def apply_ricci_flow_step(self, model, lr)` -- One step of diffusive Ricci flow smoothing on all parameters.
+- `PerelmanRicciFlow.perform_perelman_surgery` (method) `maxwell_crystal.py:1989` `def perform_perelman_surgery(self, model, ricci_scalar)` -- Cut singularities (outlier weights) when curvature exceeds the surgery threshold.
+- `PerelmanRicciFlow.compute_adaptive_lr_factor` (method) `maxwell_crystal.py:2031` `def compute_adaptive_lr_factor(self, model)` -- Reduce learning rate when curvature spikes above recent average.
+- `PerelmanRicciFlow.get_flow_metrics` (method) `maxwell_crystal.py:2047` `def get_flow_metrics(self, model)` -- Return summary Ricci-flow diagnostics.
+- `SpectroscopyMetricsCalculator.__init__` (method) `maxwell_crystal.py:2064` `def __init__(self, config)` -- Store config reference.
+- `SpectroscopyMetricsCalculator.compute` (method) `maxwell_crystal.py:2068` `def compute(self, model)` -- Compute weight diffraction pattern and spectral entropy.
+- `SpectroscopyMetricsCalculator.compute_weight_diffraction` (method) `maxwell_crystal.py:2073` `def compute_weight_diffraction(self, coeffs)` -- FFT of concatenated weights with peak detection.
+- `LambdaPressureScheduler.__init__` (method) `maxwell_crystal.py:2104` `def __init__(self, config)` -- Initialise lambda in float64 precision.
+- `LambdaPressureScheduler.current_lambda` (method) `maxwell_crystal.py:2114` `def current_lambda(self)` -- Current pressure value.
+- `LambdaPressureScheduler.step` (method) `maxwell_crystal.py:2118` `def step(self, epoch)` -- Increase lambda at fixed epoch intervals.
+- `LambdaPressureScheduler.compute_regularization_loss` (method) `maxwell_crystal.py:2126` `def compute_regularization_loss(self, model)` -- L2 penalty on distance from nearest integer for each parameter.
+- `LambdaPressureScheduler.set_lambda` (method) `maxwell_crystal.py:2139` `def set_lambda(self, value)` -- Directly set the lambda value.
+- `AdaptiveLambdaScheduler.__init__` (method) `maxwell_crystal.py:2147` `def __init__(self, config)` -- Initialise base and accelerated growth factors.
+- `AdaptiveLambdaScheduler.step_adaptive` (method) `maxwell_crystal.py:2153` `def step_adaptive(self, epoch, topo_phase_state)` -- Grow lambda faster when topological order is emerging.
+- `AnnealingScheduler.__init__` (method) `maxwell_crystal.py:2172` `def __init__(self, config)` -- Initialise temperature schedule.
+- `AnnealingScheduler.temperature` (method) `maxwell_crystal.py:2180` `def temperature(self)` -- Current annealing temperature.
+- `AnnealingScheduler.step` (method) `maxwell_crystal.py:2184` `def step(self)` -- Cool by one step.
+- `AnnealingScheduler.accept_perturbation` (method) `maxwell_crystal.py:2188` `def accept_perturbation(self, delta_loss)` -- Metropolis acceptance criterion.
+- `AnnealingScheduler.should_restart` (method) `maxwell_crystal.py:2197` `def should_restart(self, current_delta, best_delta)` -- Whether the current state has drifted too far from best.
+- `TopologicalAnnealingScheduler.__init__` (method) `maxwell_crystal.py:2205` `def __init__(self, config)` -- Initialise with base cooling rate.
+- `TopologicalAnnealingScheduler.step_adaptive` (method) `maxwell_crystal.py:2210` `def step_adaptive(self, alignment_trend, resonance_score)` -- Slow cooling when alignment is growing, speed up when it recedes.
+- `TrainingMetricsMonitor.__init__` (method) `maxwell_crystal.py:2225` `def __init__(self, config)` -- Initialise metric history buffers.
+- `TrainingMetricsMonitor.update_metrics` (method) `maxwell_crystal.py:2257` `def update_metrics(self)` -- Append each provided metric to its history list.
+- `TrainingMetricsMonitor.compute_delta_slope` (method) `maxwell_crystal.py:2269` `def compute_delta_slope(self)` -- Linear regression slope of recent delta values.
+- `TrainingMetricsMonitor.format_progress_bar` (method) `maxwell_crystal.py:2282` `def format_progress_bar(self, epoch, total_epochs, phase)` -- Format all metrics into a multi-line progress string.
+- `TrainingMetricsMonitor.safe_get` (method) `maxwell_crystal.py:2286` `def safe_get(key)`
+- `CheckpointManager.__init__` (method) `maxwell_crystal.py:2356` `def __init__(self, config, checkpoint_dir)` -- Create checkpoint directory and initialise timer.
+- `CheckpointManager.should_save_checkpoint` (method) `maxwell_crystal.py:2366` `def should_save_checkpoint(self)` -- True when at least CHECKPOINT_INTERVAL_MINUTES have elapsed.
+- `CheckpointManager.save_checkpoint` (method) `maxwell_crystal.py:2370` `def save_checkpoint(self, model, optimizer, epoch, metrics, phase, lambda_value, config_snapshot)` -- Save model, optimiser, metrics, and config to a timestamped file and latest link.
+- `CheckpointManager.load_latest_checkpoint` (method) `maxwell_crystal.py:2399` `def load_latest_checkpoint(self)` -- Load the latest checkpoint if it exists.
+- `GlassStateDetector.__init__` (method) `maxwell_crystal.py:2410` `def __init__(self, config)` -- Initialise patience buffer.
+- `GlassStateDetector.should_stop` (method) `maxwell_crystal.py:2416` `def should_stop(self, epoch, lc, sp, kappa, delta, temp, cv)` -- Return True if recent metrics indicate glass formation.
+- `GlassStateDetector.is_crystal_formed` (method) `maxwell_crystal.py:2452` `def is_crystal_formed(self, lc, sp, kappa, delta, temp, cv)` -- Return True if all metrics are below crystal thresholds.
+- `WeightIntegrityChecker.check` (method) `maxwell_crystal.py:2471` `def check(model)` -- Return integrity report with counts and corruption ratio.
+- `TrainingEngine.__init__` (method) `maxwell_crystal.py:2501` `def __init__(self, config)` -- Instantiate all metric calculators.
+- `TrainingEngine.compute_weight_metrics` (method) `maxwell_crystal.py:2515` `def compute_weight_metrics(self, model)` -- Local complexity and superposition averaged over all weight matrices.
+- `TrainingEngine.compute_norm_conservation_error` (method) `maxwell_crystal.py:2530` `def compute_norm_conservation_error(self, model, val_x)` -- Relative norm difference between input and output.
+- `TrainingEngine.train_single_epoch` (method) `maxwell_crystal.py:2540` `def train_single_epoch(self, model, optimizer, dataloader, epoch, lambda_scheduler, ricci_flow)` -- Run one epoch of gradient descent with optional regularisation.
+- `TrainingEngine.validate` (method) `maxwell_crystal.py:2578` `def validate(self, model, val_x, val_y)` -- Compute validation loss and accuracy.
+- `TrainingEngine.collect_all_metrics` (method) `maxwell_crystal.py:2590` `def collect_all_metrics(self, model, monitor, val_x, val_y, lambda_scheduler, annealing_scheduler, current_lr, epoch)` -- Compute every metric from the paper and return as a flat dict.
+- `Phase0Orchestrator.__init__` (method) `maxwell_crystal.py:2673` `def __init__(self, config)` -- Initialise spectral statistics calculator.
+- `Phase0Orchestrator.optimize_kernel_ratio` (method) `maxwell_crystal.py:2679` `def optimize_kernel_ratio(self)` -- Sweep imaginary ratios and return the one with lowest combined GUE loss.
+- `BatchSizeProspector.__init__` (method) `maxwell_crystal.py:2730` `def __init__(self, config, hamiltonian_engine, imaginary_ratio)` -- Store engine reference and optimal imaginary ratio.
+- `BatchSizeProspector.prospect` (method) `maxwell_crystal.py:2737` `def prospect(self)` -- Train briefly at each candidate batch size and return the best.
+- `SeedMiner.__init__` (method) `maxwell_crystal.py:2789` `def __init__(self, config, hamiltonian_engine, batch_size, imaginary_ratio)` -- Store references for dataset and model creation.
+- `SeedMiner.mine` (method) `maxwell_crystal.py:2798` `def mine(self)` -- Evaluate seeds and return the one with best delta velocity and kappa.
+- `FullTrainingOrchestrator.__init__` (method) `maxwell_crystal.py:2884` `def __init__(self, config, hamiltonian_engine, seed, batch_size, imaginary_ratio)` -- Store all training configuration.
+- `FullTrainingOrchestrator.run_phase3_training` (method) `maxwell_crystal.py:2894` `def run_phase3_training(self, start_epoch, model)` -- Execute Phase 3 and return (model, optimiser, monitor).
+- `RefinementOrchestrator.__init__` (method) `maxwell_crystal.py:3005` `def __init__(self, config, hamiltonian_engine, model, optimizer, monitor, seed, batch_size, imaginary_ratio)` -- Store all refinement parameters.
+- `RefinementOrchestrator.run_phase4_refinement` (method) `maxwell_crystal.py:3021` `def run_phase4_refinement(self, start_epoch)` -- Run Phase 4 refinement and return the best model.
+- `RefinementOrchestrator.main` (method) `maxwell_crystal.py:3112` `def main()` -- Entry point: parse arguments, run the five-phase protocol.
+- `RefinementOrchestrator.load_latest_checkpoint` (method) `maxwell_crystal.py:3193` `def load_latest_checkpoint(mdl, checkpoint_paths)`
+
+## maxwell_crystallography_suite.py
+- `LoggerFactory.create_logger` (method) `maxwell_crystallography_suite.py:205` `def create_logger(name, level, config)` -- Create and return a configured logger.
+- `IMetricCalculator.compute` (method) `maxwell_crystallography_suite.py:221` `def compute(self, model)` -- Compute metrics for the given model.
+- `IPhaseDetector.detect` (method) `maxwell_crystallography_suite.py:229` `def detect(self, spectral_field)` -- Detect phase from spectral field.
+- `SpectralLayer.__init__` (method) `maxwell_crystallography_suite.py:237` `def __init__(self, channels, grid_size, config, imaginary_ratio)` -- Initialise real and imaginary kernel parameters.
+- `SpectralLayer.forward` (method) `maxwell_crystallography_suite.py:252` `def forward(self, x)` -- Apply spectral convolution in Fourier space.
+- `SpectralLayer.get_spectral_operator` (method) `maxwell_crystallography_suite.py:271` `def get_spectral_operator(self)` -- Extract (channels x channels) complex Hermitian-like matrix for eigenvalue analysis.
+- `SpectralLayer.get_kernel_ratio` (method) `maxwell_crystallography_suite.py:279` `def get_kernel_ratio(self)` -- Return the imaginary-to-real kernel norm ratio.
+- `MaxwellSpectralNetwork.__init__` (method) `maxwell_crystallography_suite.py:291` `def __init__(self, config, imaginary_ratio)` -- Build all sub-layers with the given architectural parameters.
+- `MaxwellSpectralNetwork.forward` (method) `maxwell_crystallography_suite.py:309` `def forward(self, x)` -- Forward pass through the full spectral network.
+- `MaxwellSpectralNetwork.get_kernel_ratio` (method) `maxwell_crystallography_suite.py:320` `def get_kernel_ratio(self)` -- Compute effective imaginary-to-real kernel norm ratio across all layers.
+- `GOEGUESpectralAnalyzer.__init__` (method) `maxwell_crystallography_suite.py:340` `def __init__(self, config)` -- Store configuration reference.
+- `GOEGUESpectralAnalyzer.extract_spectral_operators` (method) `maxwell_crystallography_suite.py:344` `def extract_spectral_operators(self, model)` -- Return the complex spectral operator from every SpectralLayer in the model.
+- `GOEGUESpectralAnalyzer.compute_eigenvalue_spacing` (method) `maxwell_crystallography_suite.py:353` `def compute_eigenvalue_spacing(self, eigenvalues)` -- Unfold eigenvalues and return normalised nearest-neighbour spacings.
+- `GOEGUESpectralAnalyzer.compute_spacing_distribution_loss` (method) `maxwell_crystallography_suite.py:368` `def compute_spacing_distribution_loss(self, spacings, target)` -- MSE between empirical P(s) and Wigner surmise for GOE or GUE.
+- `GOEGUESpectralAnalyzer.compute_dyson_index` (method) `maxwell_crystallography_suite.py:385` `def compute_dyson_index(self, spacings)` -- Estimate the Dyson beta from small-spacing power-law P(s) ~ s^beta.
+- `GOEGUESpectralAnalyzer.compute_pair_correlation` (method) `maxwell_crystallography_suite.py:402` `def compute_pair_correlation(self, eigenvalues)` -- Two-level correlation function R_2(s).
+- `GOEGUESpectralAnalyzer.compute_correlation_loss` (method) `maxwell_crystallography_suite.py:423` `def compute_correlation_loss(self, eigenvalues, target)` -- MSE between empirical R_2(s) and analytical prediction.
+- `GOEGUESpectralAnalyzer.compute` (method) `maxwell_crystallography_suite.py:438` `def compute(self, model)` -- Run full GOE/GUE spectral analysis on all spectral layers.
+- `WeightIntegrityCalculator.__init__` (method) `maxwell_crystallography_suite.py:531` `def __init__(self, config)` -- Store config reference.
+- `WeightIntegrityCalculator.compute` (method) `maxwell_crystallography_suite.py:535` `def compute(self, model)` -- Return integrity report.
+- `DiscretizationCalculator.__init__` (method) `maxwell_crystallography_suite.py:562` `def __init__(self, config)` -- Store config reference.
+- `DiscretizationCalculator.compute` (method) `maxwell_crystallography_suite.py:566` `def compute(self, model)` -- Compute delta, alpha, spectral entropy, and per-layer deltas.
+- `SpectralGeometryCalculator.__init__` (method) `maxwell_crystallography_suite.py:605` `def __init__(self, config)` -- Store config reference.
+- `SpectralGeometryCalculator.compute` (method) `maxwell_crystallography_suite.py:609` `def compute(self, model)` -- Compute spectral geometry observables from weight outer product.
+- `RicciCurvatureCalculator.__init__` (method) `maxwell_crystallography_suite.py:653` `def __init__(self, config)` -- Store config reference.
+- `RicciCurvatureCalculator.compute` (method) `maxwell_crystallography_suite.py:657` `def compute(self, model)` -- Compute Ricci scalar and sectional curvatures from weight metric.
+- `BerryPhaseCalculator.__init__` (method) `maxwell_crystallography_suite.py:698` `def __init__(self, config)` -- Initialise logger.
+- `BerryPhaseCalculator.load_checkpoints` (method) `maxwell_crystallography_suite.py:703` `def load_checkpoints(self, checkpoint_dir)` -- Load all .pth files sorted by epoch.
+- `BerryPhaseCalculator.flatten_kernel_params` (method) `maxwell_crystallography_suite.py:725` `def flatten_kernel_params(self, state_dict)` -- Concatenate all spectral layer kernels into a single complex vector.
+- `BerryPhaseCalculator.compute_berry_connection_discrete` (method) `maxwell_crystallography_suite.py:744` `def compute_berry_connection_discrete(self, theta_prev, theta_curr)` -- Discrete Berry connection between consecutive parameter snapshots.
+- `BerryPhaseCalculator.calculate_berry_phase` (method) `maxwell_crystallography_suite.py:755` `def calculate_berry_phase(self, checkpoint_dir)` -- Compute total Berry phase, winding number, and cumulative trajectory.
+- `ControlSystemAnalyzer.__init__` (method) `maxwell_crystallography_suite.py:787` `def __init__(self, config)` -- Store config reference.
+- `ControlSystemAnalyzer.extract_state_space` (method) `maxwell_crystallography_suite.py:791` `def extract_state_space(self, model)` -- Extract a composite state-space (A, B, C, D) from weight matrices.
+- `ControlSystemAnalyzer.analyze_stability` (method) `maxwell_crystallography_suite.py:821` `def analyze_stability(self, A)` -- Eigenvalue stability analysis of the state matrix.
+- `ControlSystemAnalyzer.compute` (method) `maxwell_crystallography_suite.py:836` `def compute(self, model)` -- Run full control-theory analysis.
+- `ThermodynamicCalculator.__init__` (method) `maxwell_crystallography_suite.py:845` `def __init__(self, config)` -- Store config reference.
+- `ThermodynamicCalculator.compute` (method) `maxwell_crystallography_suite.py:849` `def compute(self, model)` -- Compute thermodynamic potentials from crystallographic observables.
+- `FullFourierAnalyzer.__init__` (method) `maxwell_crystallography_suite.py:884` `def __init__(self, config)` -- Precompute wavenumber grids.
+- `FullFourierAnalyzer.compute_full_spectrum` (method) `maxwell_crystallography_suite.py:893` `def compute_full_spectrum(self, spectral_field)` -- Return magnitude, phase, power, and derived statistics.
+- `FullFourierAnalyzer.compute_resonance_metrics` (method) `maxwell_crystallography_suite.py:913` `def compute_resonance_metrics(self, spectral_field)` -- Aggregate spectral concentration into a resonance score.
+- `FourierMassCenterAnalyzer.__init__` (method) `maxwell_crystallography_suite.py:927` `def __init__(self, config)` -- Initialise wavenumber grids and sub-analyzers.
+- `FourierMassCenterAnalyzer.compute_mass_center` (method) `maxwell_crystallography_suite.py:936` `def compute_mass_center(self, spectral_field)` -- Return centre-of-mass coordinates and resonance diagnostics.
+- `TopologicalPhaseDetector.__init__` (method) `maxwell_crystallography_suite.py:965` `def __init__(self, config)` -- Initialise history buffers.
+- `TopologicalPhaseDetector.detect` (method) `maxwell_crystallography_suite.py:973` `def detect(self, spectral_field)` -- Full topological phase detection returning diagnostic dict.
+- `SpectralFieldExtractor.extract` (method) `maxwell_crystallography_suite.py:1000` `def extract(model, grid_size)` -- Return the mean complex spectral kernel across all spectral layers.
+- `TopologicalMetricsCalculator.__init__` (method) `maxwell_crystallography_suite.py:1018` `def __init__(self, config)` -- Initialise sub-components.
+- `TopologicalMetricsCalculator.compute` (method) `maxwell_crystallography_suite.py:1024` `def compute(self, model)` -- Run topological detection and return metrics dict.
+- `GradientDynamicsCalculator.__init__` (method) `maxwell_crystallography_suite.py:1054` `def __init__(self, config)` -- Store config reference.
+- `GradientDynamicsCalculator.compute` (method) `maxwell_crystallography_suite.py:1058` `def compute(self, model)` -- Compute kappa, T_eff, and gradient variance from validation data.
+- `SchrodingerAnalyzer.__init__` (method) `maxwell_crystallography_suite.py:1113` `def __init__(self, config)` -- Initialise projection parameters.
+- `SchrodingerAnalyzer.extract_compressed_wavefunction` (method) `maxwell_crystallography_suite.py:1119` `def extract_compressed_wavefunction(self, model)` -- Project the full parameter vector to a fixed-dimension wavefunction.
+- `SchrodingerAnalyzer.compute` (method) `maxwell_crystallography_suite.py:1142` `def compute(self, model)` -- Compute wavefunction entropy, participation ratio, and quantum coherence.
+- `ComprehensiveVisualizer.__init__` (method) `maxwell_crystallography_suite.py:1159` `def __init__(self, config)` -- Store config reference.
+- `ComprehensiveVisualizer.visualize_checkpoint_analysis` (method) `maxwell_crystallography_suite.py:1163` `def visualize_checkpoint_analysis(self, results, output_path)` -- Render the full 5x4 analysis dashboard to a file.
+- `CheckpointAnalyzer.__init__` (method) `maxwell_crystallography_suite.py:1454` `def __init__(self, config)` -- Instantiate all sub-calculators.
+- `CheckpointAnalyzer.analyze_checkpoint` (method) `maxwell_crystallography_suite.py:1471` `def analyze_checkpoint(self, checkpoint_path, val_data)` -- Load a checkpoint, run every analyzer, and return the aggregated results dict.
+- `BatchProcessor.__init__` (method) `maxwell_crystallography_suite.py:1578` `def __init__(self, config)` -- Initialise analyzer and visualizer.
+- `BatchProcessor.process_directory` (method) `maxwell_crystallography_suite.py:1585` `def process_directory(self, checkpoint_dir, output_dir, val_data)` -- Iterate over all .pth files, analyze each, and save results.
+- `MaxwellCrystallographySuite.__init__` (method) `maxwell_crystallography_suite.py:1778` `def __init__(self, config)` -- Initialise the suite with all sub-components.
+- `MaxwellCrystallographySuite.run_analysis` (method) `maxwell_crystallography_suite.py:1785` `def run_analysis(self, checkpoint_dir, output_dir)` -- Execute full analysis: batch processing, Berry phase, and summary.
+- `MaxwellCrystallographySuite.main` (method) `maxwell_crystallography_suite.py:1850` `def main()` -- Parse arguments and run the Maxwell crystallography suite.
+
+## maxwell_field_hawking_suite.py
+- `LoggerFactory.create_logger` (method) `maxwell_field_hawking_suite.py:146` `def create_logger(name, level)` -- Create and return a configured logger.
+- `CustomUnpickler.find_class` (method) `maxwell_field_hawking_suite.py:161` `def find_class(self, module, name)` -- Override to handle missing classes gracefully.
+- `DummyClass.__init__` (method) `maxwell_field_hawking_suite.py:171` `def __init__(self)`
+- `DummyClass.get` (method) `maxwell_field_hawking_suite.py:176` `def get(self, key, default)`
+- `DummyClass.keys` (method) `maxwell_field_hawking_suite.py:178` `def keys(self)`
+- `DummyClass.items` (method) `maxwell_field_hawking_suite.py:180` `def items(self)`
+- `DummyClass.load_checkpoint_robust` (method) `maxwell_field_hawking_suite.py:185` `def load_checkpoint_robust(path, device)` -- Load a checkpoint with multiple fallback strategies.
+- `SpectralLayer.__init__` (method) `maxwell_field_hawking_suite.py:210` `def __init__(self, channels, grid_size, imaginary_ratio)` -- Initialise real and imaginary kernel parameters.
+- `SpectralLayer.forward` (method) `maxwell_field_hawking_suite.py:223` `def forward(self, x)` -- Apply spectral convolution in Fourier space.
+- `MaxwellSpectralNetwork.__init__` (method) `maxwell_field_hawking_suite.py:245` `def __init__(self, config, imaginary_ratio)` -- Build all sub-layers.
+- `MaxwellSpectralNetwork.forward` (method) `maxwell_field_hawking_suite.py:263` `def forward(self, x)` -- Forward pass through the full spectral network.
+- `MaxwellSpectralNetwork.get_flat_parameters` (method) `maxwell_field_hawking_suite.py:274` `def get_flat_parameters(self)` -- Return all parameters as a single flat tensor.
+- `MaxwellSpectralNetwork.get_weight_dict` (method) `maxwell_field_hawking_suite.py:278` `def get_weight_dict(self)` -- Return all named parameter tensors as numpy arrays.
+- `MetadataExtractor.extract` (method) `maxwell_field_hawking_suite.py:287` `def extract(checkpoint)` -- Return a standardised metadata dict from any checkpoint format.
+- `GravitationalConstantCalculator.__init__` (method) `maxwell_field_hawking_suite.py:334` `def __init__(self, config)` -- Store config reference.
+- `GravitationalConstantCalculator.calculate` (method) `maxwell_field_hawking_suite.py:338` `def calculate(self, all_weights, delta)` -- Return G_alg, force, and crystallisation pressure.
+- `PlanckConstantCalculator.__init__` (method) `maxwell_field_hawking_suite.py:369` `def __init__(self, config)` -- Store config reference.
+- `PlanckConstantCalculator.calculate` (method) `maxwell_field_hawking_suite.py:373` `def calculate(self, all_weights, delta, loss)` -- Return four estimates of hbar and their weighted unification.
+- `BoltzmannConstantCalculator.__init__` (method) `maxwell_field_hawking_suite.py:415` `def __init__(self, config)` -- Store config reference.
+- `BoltzmannConstantCalculator.calculate` (method) `maxwell_field_hawking_suite.py:419` `def calculate(self, all_weights_np, loss, loss_history)` -- Return entropy-based and thermal k_B estimates.
+- `SpeedOfLightCalculator.__init__` (method) `maxwell_field_hawking_suite.py:443` `def __init__(self, config)` -- Store config reference.
+- `SpeedOfLightCalculator.calculate` (method) `maxwell_field_hawking_suite.py:447` `def calculate(self, all_weights_np, h_bar, G_alg)` -- Return multiple c estimates.
+- `InformationalMassCalculator.__init__` (method) `maxwell_field_hawking_suite.py:469` `def __init__(self, config)` -- Store config reference.
+- `InformationalMassCalculator.calculate` (method) `maxwell_field_hawking_suite.py:473` `def calculate(self, all_weights, G_alg, c_eff, h_bar)` -- Return multiple mass estimates.
+- `HorizonAreaCalculator.__init__` (method) `maxwell_field_hawking_suite.py:503` `def __init__(self, config)` -- Store config reference.
+- `HorizonAreaCalculator.calculate` (method) `maxwell_field_hawking_suite.py:507` `def calculate(self, all_weights)` -- Return effective area from active parameters and weight entropy.
+- `HawkingRadiationCalculator.__init__` (method) `maxwell_field_hawking_suite.py:523` `def __init__(self, config)` -- Instantiate all sub-calculators.
+- `HawkingRadiationCalculator.calculate` (method) `maxwell_field_hawking_suite.py:533` `def calculate(self, model, loss, loss_history, precomputed_delta)` -- Run the full Hawking radiation pipeline and return all results.
+- `WeightLatticeMapper.__init__` (method) `maxwell_field_hawking_suite.py:599` `def __init__(self, config)` -- Store config reference.
+- `WeightLatticeMapper.map` (method) `maxwell_field_hawking_suite.py:603` `def map(self, weight_dict)` -- Return (charge_density, permittivity) as 3D arrays.
+- `PoissonSolver.__init__` (method) `maxwell_field_hawking_suite.py:629` `def __init__(self, config)` -- Store config reference.
+- `PoissonSolver.solve` (method) `maxwell_field_hawking_suite.py:633` `def solve(self, charge_density, permittivity)` -- Return the electrostatic potential phi on the 3D grid.
+- `PoissonSolver.compute_electric_field` (method) `maxwell_field_hawking_suite.py:647` `def compute_electric_field(self, potential)` -- Return E = -grad(phi).
+- `ScatteringSolver.__init__` (method) `maxwell_field_hawking_suite.py:655` `def __init__(self, config)` -- Store config reference.
+- `ScatteringSolver.compute` (method) `maxwell_field_hawking_suite.py:659` `def compute(self, permittivity)` -- Return scattering intensity map, central slice, and peak analysis.
+- `DielectricTensorAnalyzer.__init__` (method) `maxwell_field_hawking_suite.py:686` `def __init__(self, config)` -- Store config reference.
+- `DielectricTensorAnalyzer.analyze` (method) `maxwell_field_hawking_suite.py:690` `def analyze(self, permittivity)` -- Return eigenvalues of the gradient structure tensor and anisotropy ratio.
+- `PhotonicEntropyCalculator.__init__` (method) `maxwell_field_hawking_suite.py:717` `def __init__(self, config)` -- Store config reference.
+- `PhotonicEntropyCalculator.calculate` (method) `maxwell_field_hawking_suite.py:721` `def calculate(self, potential, intensity_3d)` -- Return field entropy, mode entropy, and their sum.
+- `BandgapAnalyzer.__init__` (method) `maxwell_field_hawking_suite.py:744` `def __init__(self, config)` -- Store config reference.
+- `BandgapAnalyzer.analyze` (method) `maxwell_field_hawking_suite.py:748` `def analyze(self, fourier_coeffs)` -- Return radial profile, gap depth, and boolean bandgap detection.
+- `ElectromagneticPhaseClassifier.__init__` (method) `maxwell_field_hawking_suite.py:776` `def __init__(self, config)` -- Store config reference.
+- `ElectromagneticPhaseClassifier.classify` (method) `maxwell_field_hawking_suite.py:780` `def classify(self, anisotropy, scattering, photonic_entropy, delta, alpha)` -- Return phase name, crystal/glass flags, and confidence score.
+- `MaxwellFieldAnalyzer.__init__` (method) `maxwell_field_hawking_suite.py:810` `def __init__(self, config)` -- Instantiate all sub-components.
+- `MaxwellFieldAnalyzer.analyze` (method) `maxwell_field_hawking_suite.py:821` `def analyze(self, model)` -- Run the full EM pipeline on the model weights.
+- `CombinedVisualizer.__init__` (method) `maxwell_field_hawking_suite.py:866` `def __init__(self, config)` -- Store config reference.
+- `CombinedVisualizer.render` (method) `maxwell_field_hawking_suite.py:870` `def render(self, hawking, maxwell, metadata, output_path)` -- Save a comprehensive 4x4 figure to disk.
+- `CombinedAnalyzer.__init__` (method) `maxwell_field_hawking_suite.py:1068` `def __init__(self, config)` -- Instantiate sub-analyzers and visualizer.
+- `CombinedAnalyzer.analyze_checkpoint` (method) `maxwell_field_hawking_suite.py:1076` `def analyze_checkpoint(self, checkpoint_path, output_dir)` -- Load, analyze, visualize, and return aggregated results.
+- `BatchAnalyzer.__init__` (method) `maxwell_field_hawking_suite.py:1132` `def __init__(self, config)` -- Instantiate the single-checkpoint analyzer.
+- `BatchAnalyzer.process` (method) `maxwell_field_hawking_suite.py:1138` `def process(self, input_path, output_dir)` -- Analyze one file or all .pth files in a directory.
+- `BatchAnalyzer.main` (method) `maxwell_field_hawking_suite.py:1227` `def main()` -- Parse arguments and run the combined analysis suite.
+
+## maxwell_magnetic_orbitals.py
+- `LoggerFactory.create_logger` (method) `maxwell_magnetic_orbitals.py:85` `def create_logger(name, level)` -- Create and return a configured logger.
+- `SpectralLayer.__init__` (method) `maxwell_magnetic_orbitals.py:98` `def __init__(self, channels, grid_size, imaginary_ratio)`
+- `SpectralLayer.forward` (method) `maxwell_magnetic_orbitals.py:106` `def forward(self, x)` -- Apply spectral convolution in Fourier space.
+- `MaxwellSpectralNetwork.__init__` (method) `maxwell_magnetic_orbitals.py:119` `def __init__(self, config, imaginary_ratio)`
+- `MaxwellSpectralNetwork.forward` (method) `maxwell_magnetic_orbitals.py:132` `def forward(self, x)`
+- `ModelLoader.__init__` (method) `maxwell_magnetic_orbitals.py:143` `def __init__(self, config)`
+- `ModelLoader.load` (method) `maxwell_magnetic_orbitals.py:147` `def load(self, checkpoint_dir)` -- Return (model, info_dict) from the best available checkpoint.
+- `AnalyticalMultipoleSource.__init__` (method) `maxwell_magnetic_orbitals.py:192` `def __init__(self, config)` -- Precompute coordinate grids in the equatorial plane.
+- `AnalyticalMultipoleSource.generate` (method) `maxwell_magnetic_orbitals.py:205` `def generate(self, l, m)` -- Return a (6,H,W) source tensor for the l-th multipole.
+- `AnalyticalMultipoleSource.get_analytical_density` (method) `maxwell_magnetic_orbitals.py:260` `def get_analytical_density(self, l, m)` -- Return normalised |B|^2 for analytical control (no network).
+- `HallProjectionCalculator.__init__` (method) `maxwell_magnetic_orbitals.py:274` `def __init__(self, config)`
+- `HallProjectionCalculator.project` (method) `maxwell_magnetic_orbitals.py:277` `def project(self, model_output)` -- Multi-angle averaged Hall projection.
+- `TomographicScanner.__init__` (method) `maxwell_magnetic_orbitals.py:294` `def __init__(self, config)`
+- `TomographicScanner.scan` (method) `maxwell_magnetic_orbitals.py:297` `def scan(self, model, source, n_slices)` -- Return a list of 2D Hall projection slices.
+- `HydrogenOrbitalCalculator.__init__` (method) `maxwell_magnetic_orbitals.py:312` `def __init__(self, config)`
+- `HydrogenOrbitalCalculator.radial_wavefunction` (method) `maxwell_magnetic_orbitals.py:315` `def radial_wavefunction(self, n, l, r)` -- Non-relativistic radial wavefunction R_nl(r).
+- `HydrogenOrbitalCalculator.spherical_harmonic_real` (method) `maxwell_magnetic_orbitals.py:323` `def spherical_harmonic_real(self, l, m, theta, phi)` -- Real spherical harmonic Y_l^m.
+- `HydrogenOrbitalCalculator.probability_density_2d` (method) `maxwell_magnetic_orbitals.py:330` `def probability_density_2d(self, n, l, m, grid_size)` -- Fix 1: |psi(r, theta=pi/2, phi)|^2 in equatorial plane.
+- `HydrogenOrbitalCalculator.sample_orbital_3d` (method) `maxwell_magnetic_orbitals.py:345` `def sample_orbital_3d(self, n, l, m, num_samples)` -- Monte Carlo rejection sampling of |psi|^2.
+- `IsomorphismMetricsCalculator.__init__` (method) `maxwell_magnetic_orbitals.py:378` `def __init__(self, config)`
+- `IsomorphismMetricsCalculator.compute` (method) `maxwell_magnetic_orbitals.py:381` `def compute(self, em_density, quantum_density)` -- Return spatial correlation, node overlap, symmetry correlation, KL divergence.
+- `OrbitalVisualizer.__init__` (method) `maxwell_magnetic_orbitals.py:406` `def __init__(self, config)`
+- `OrbitalVisualizer.visualize_comparison` (method) `maxwell_magnetic_orbitals.py:409` `def visualize_comparison(self, em_density, quantum_density, metrics, label, tomo_slices, orbital_3d, save_path...` -- Render comparison figure with analytical control row.
+- `MagneticOrbitalExperiment.__init__` (method) `maxwell_magnetic_orbitals.py:487` `def __init__(self, config)`
+- `MagneticOrbitalExperiment.run` (method) `maxwell_magnetic_orbitals.py:498` `def run(self, output_dir, checkpoint_dir)` -- Execute the full protocol.
+- `MagneticOrbitalExperiment.main` (method) `maxwell_magnetic_orbitals.py:585` `def main()` -- Parse arguments and run the experiment.
+
+## maxwell_magnetic_orbitals_v2.py
+- `LoggerFactory.create_logger` (method) `maxwell_magnetic_orbitals_v2.py:94` `def create_logger(name, level)` -- Create and return a configured logger.
+- `SpectralLayer.__init__` (method) `maxwell_magnetic_orbitals_v2.py:107` `def __init__(self, channels, grid_size, imaginary_ratio)` -- Initialise real and imaginary kernel parameters.
+- `SpectralLayer.forward` (method) `maxwell_magnetic_orbitals_v2.py:116` `def forward(self, x)` -- Apply spectral convolution in Fourier space.
+- `MaxwellSpectralNetwork.__init__` (method) `maxwell_magnetic_orbitals_v2.py:131` `def __init__(self, config, imaginary_ratio)` -- Build all sub-layers.
+- `MaxwellSpectralNetwork.forward` (method) `maxwell_magnetic_orbitals_v2.py:147` `def forward(self, x)` -- Standard forward pass.
+- `MaxwellSpectralNetwork.forward_spectral_only` (method) `maxwell_magnetic_orbitals_v2.py:156` `def forward_spectral_only(self, x_expanded)` -- Apply only the spectral layers (bypass input/expansion projections).
+- `AnalyticalMultipoleSource.__init__` (method) `maxwell_magnetic_orbitals_v2.py:165` `def __init__(self, config)` -- Precompute coordinate grids.
+- `AnalyticalMultipoleSource.generate` (method) `maxwell_magnetic_orbitals_v2.py:177` `def generate(self, l, m)` -- Return a (6,H,W) source tensor.
+- `AnalyticalMultipoleSource.get_density` (method) `maxwell_magnetic_orbitals_v2.py:227` `def get_density(self, l, m)` -- Return normalised |B|^2 for analytical control.
+- `PoissonEvolver.__init__` (method) `maxwell_magnetic_orbitals_v2.py:242` `def __init__(self, config)` -- Store config reference.
+- `PoissonEvolver.evolve` (method) `maxwell_magnetic_orbitals_v2.py:246` `def evolve(self, source_6ch)` -- Treat the Bz channel as charge density, solve Poisson, return |E|^2.
+- `ChannelAwareProjection.__init__` (method) `maxwell_magnetic_orbitals_v2.py:278` `def __init__(self, config)` -- Build per-component projections.
+- `ChannelAwareProjection.forward` (method) `maxwell_magnetic_orbitals_v2.py:288` `def forward(self, x)` -- Process each (Re, Im) pair separately then concatenate.
+- `HallProjector.__init__` (method) `maxwell_magnetic_orbitals_v2.py:298` `def __init__(self, config)` -- Store config reference.
+- `HallProjector.project_6ch` (method) `maxwell_magnetic_orbitals_v2.py:302` `def project_6ch(self, tensor)` -- Project a 6-channel field tensor to scalar density.
+- `HallProjector.project_energy` (method) `maxwell_magnetic_orbitals_v2.py:316` `def project_energy(self, tensor)` -- Project an arbitrary multi-channel tensor to scalar energy density.
+- `HydrogenOrbitalCalculator.__init__` (method) `maxwell_magnetic_orbitals_v2.py:325` `def __init__(self, config)` -- Store config reference.
+- `HydrogenOrbitalCalculator.radial_wavefunction` (method) `maxwell_magnetic_orbitals_v2.py:329` `def radial_wavefunction(self, n, l, r)` -- Non-relativistic radial wavefunction R_nl(r).
+- `HydrogenOrbitalCalculator.spherical_harmonic_real` (method) `maxwell_magnetic_orbitals_v2.py:337` `def spherical_harmonic_real(self, l, m, theta, phi)` -- Real spherical harmonic.
+- `HydrogenOrbitalCalculator.density_2d` (method) `maxwell_magnetic_orbitals_v2.py:344` `def density_2d(self, n, l, m, grid_size)` -- 2D |psi|^2 in equatorial plane.
+- `HydrogenOrbitalCalculator.sample_3d` (method) `maxwell_magnetic_orbitals_v2.py:357` `def sample_3d(self, n, l, m, num)` -- Monte Carlo rejection sampling.
+- `HydrogenOrbitalCalculator.spatial_corr` (method) `maxwell_magnetic_orbitals_v2.py:387` `def spatial_corr(a, b, eps)` -- Cosine similarity between two flattened maps.
+- `HydrogenOrbitalCalculator.node_overlap` (method) `maxwell_magnetic_orbitals_v2.py:393` `def node_overlap(a, b, thr)` -- Jaccard index of nodal regions.
+- `HydrogenOrbitalCalculator.symmetry_corr` (method) `maxwell_magnetic_orbitals_v2.py:402` `def symmetry_corr(a, b)` -- Correlation of angular Fourier power spectra.
+- `HydrogenOrbitalCalculator.full_metrics` (method) `maxwell_magnetic_orbitals_v2.py:410` `def full_metrics(em, qd, config)` -- Compute all isomorphism metrics.
+- `Visualizer.__init__` (method) `maxwell_magnetic_orbitals_v2.py:421` `def __init__(self, config)` -- Store config reference.
+- `Visualizer.render` (method) `maxwell_magnetic_orbitals_v2.py:425` `def render(self, label, strategies, qd, orbital_3d, save_path)` -- Render comparison of all strategies for one orbital.
+- `IsomorphismExperimentV2.__init__` (method) `maxwell_magnetic_orbitals_v2.py:489` `def __init__(self, config)` -- Initialise all sub-components.
+- `IsomorphismExperimentV2.run` (method) `maxwell_magnetic_orbitals_v2.py:527` `def run(self, output_dir, checkpoint_dir)` -- Execute the full multi-strategy experiment.
+- `IsomorphismExperimentV2.main` (method) `maxwell_magnetic_orbitals_v2.py:658` `def main()` -- Parse arguments and run the v2 experiment.
+
+## maxwell_orbital_diagnostic.py
+- `LoggerFactory.create_logger` (method) `maxwell_orbital_diagnostic.py:83` `def create_logger(name, level)` -- Create and return a configured logger.
+- `SpectralLayer.__init__` (method) `maxwell_orbital_diagnostic.py:96` `def __init__(self, channels, grid_size, imaginary_ratio)` -- Initialise real and imaginary kernel parameters.
+- `SpectralLayer.forward` (method) `maxwell_orbital_diagnostic.py:105` `def forward(self, x)` -- Apply spectral convolution in Fourier space.
+- `SpectralLayer.init_identity` (method) `maxwell_orbital_diagnostic.py:117` `def init_identity(self, scale)` -- Initialise kernels near identity: real=small, imag=0.
+- `MaxwellSpectralNetwork.__init__` (method) `maxwell_orbital_diagnostic.py:130` `def __init__(self, config, imaginary_ratio)` -- Build all sub-layers.
+- `MaxwellSpectralNetwork.forward` (method) `maxwell_orbital_diagnostic.py:146` `def forward(self, x)` -- Forward pass.
+- `MaxwellSpectralNetwork.forward_with_intermediates` (method) `maxwell_orbital_diagnostic.py:155` `def forward_with_intermediates(self, x)` -- Forward pass returning the output after every sub-layer.
+- `MaxwellSpectralNetwork.init_identity` (method) `maxwell_orbital_diagnostic.py:167` `def init_identity(self)` -- Initialise all layers near identity / passthrough.
+- `AnalyticalMultipoleSource.__init__` (method) `maxwell_orbital_diagnostic.py:184` `def __init__(self, config)` -- Precompute coordinate grids in the equatorial plane.
+- `AnalyticalMultipoleSource.generate` (method) `maxwell_orbital_diagnostic.py:196` `def generate(self, l, m)` -- Return a (6,H,W) source tensor for the l-th multipole.
+- `AnalyticalMultipoleSource.get_analytical_density` (method) `maxwell_orbital_diagnostic.py:247` `def get_analytical_density(self, l, m)` -- Return normalised |B|^2.
+- `HallProjectionCalculator.__init__` (method) `maxwell_orbital_diagnostic.py:256` `def __init__(self, config)` -- Store config reference.
+- `HallProjectionCalculator.project` (method) `maxwell_orbital_diagnostic.py:260` `def project(self, tensor)` -- Multi-angle averaged Hall projection.
+- `HallProjectionCalculator.project_intermediate` (method) `maxwell_orbital_diagnostic.py:273` `def project_intermediate(self, tensor)` -- Project an intermediate activation to a scalar energy density.
+- `HydrogenOrbitalCalculator.__init__` (method) `maxwell_orbital_diagnostic.py:283` `def __init__(self, config)` -- Store config reference.
+- `HydrogenOrbitalCalculator.radial_wavefunction` (method) `maxwell_orbital_diagnostic.py:287` `def radial_wavefunction(self, n, l, r)` -- Non-relativistic radial wavefunction R_nl(r).
+- `HydrogenOrbitalCalculator.spherical_harmonic_real` (method) `maxwell_orbital_diagnostic.py:295` `def spherical_harmonic_real(self, l, m, theta, phi)` -- Real spherical harmonic Y_l^m.
+- `HydrogenOrbitalCalculator.probability_density_2d` (method) `maxwell_orbital_diagnostic.py:302` `def probability_density_2d(self, n, l, m, grid_size)` -- 2D |psi|^2 in equatorial plane (theta=pi/2).
+- `HydrogenOrbitalCalculator.compute_spatial_correlation` (method) `maxwell_orbital_diagnostic.py:316` `def compute_spatial_correlation(a, b, eps)` -- Cosine similarity between two flattened density maps.
+- `PassthroughTest.__init__` (method) `maxwell_orbital_diagnostic.py:330` `def __init__(self, config)` -- Initialise sub-components.
+- `PassthroughTest.run` (method) `maxwell_orbital_diagnostic.py:338` `def run(self, output_dir)` -- Test all orbitals with an identity-initialised network.
+- `LayerTraceTest.__init__` (method) `maxwell_orbital_diagnostic.py:392` `def __init__(self, config)` -- Initialise sub-components.
+- `LayerTraceTest.run` (method) `maxwell_orbital_diagnostic.py:400` `def run(self, checkpoint_dir, output_dir)` -- Trace a trained model layer by layer.
+- `SymmetryTrainingTest.__init__` (method) `maxwell_orbital_diagnostic.py:507` `def __init__(self, config)` -- Initialise sub-components.
+- `SymmetryTrainingTest.compute_angular_power` (method) `maxwell_orbital_diagnostic.py:515` `def compute_angular_power(self, tensor)` -- Compute the angular power spectrum of a 2D field via azimuthal FFT.
+- `SymmetryTrainingTest.symmetry_loss` (method) `maxwell_orbital_diagnostic.py:522` `def symmetry_loss(self, input_tensor, output_tensor)` -- Penalise angular power spectrum distortion.
+- `SymmetryTrainingTest.run` (method) `maxwell_orbital_diagnostic.py:528` `def run(self, output_dir)` -- Train a fresh model with symmetry loss and track isomorphism.
+- `DiagnosticSuite.__init__` (method) `maxwell_orbital_diagnostic.py:598` `def __init__(self, config)` -- Initialise all test modes.
+- `DiagnosticSuite.run_all` (method) `maxwell_orbital_diagnostic.py:606` `def run_all(self, output_dir, checkpoint_dir)` -- Execute all three diagnostic modes and save results.
+- `DiagnosticSuite.main` (method) `maxwell_orbital_diagnostic.py:625` `def main()` -- Parse arguments and run the diagnostic suite.

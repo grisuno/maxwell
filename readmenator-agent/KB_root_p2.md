@@ -1,0 +1,114 @@
+# Subsystem: root (page 2 of 2)
+Previous: [KB_root.md](KB_root.md)
+
+## maxwell_magnetic_orbitals_v2.py
+- Doc: Corrected magnetic orbital isomorphism experiment addressing the input_proj collapse identified...
+- Layer: utility
+- Language: py
+- Symbols:
+  - `Config` (class, line 55) `class Config`
+  - `LoggerFactory` (class, line 91) `class LoggerFactory`
+  - `SpectralLayer` (class, line 105) `class SpectralLayer(Module)`
+  - `MaxwellSpectralNetwork` (class, line 129) `class MaxwellSpectralNetwork(Module)`
+  - `AnalyticalMultipoleSource` (class, line 163) `class AnalyticalMultipoleSource`
+  - `PoissonEvolver` (class, line 234) `class PoissonEvolver`
+  - `ChannelAwareProjection` (class, line 270) `class ChannelAwareProjection(Module)`
+  - `HallProjector` (class, line 296) `class HallProjector`
+  - `HydrogenOrbitalCalculator` (class, line 323) `class HydrogenOrbitalCalculator`
+  - `spatial_corr` (method, line 387) `def spatial_corr(a, b, eps)`
+  - `node_overlap` (method, line 393) `def node_overlap(a, b, thr)`
+  - `symmetry_corr` (method, line 402) `def symmetry_corr(a, b)`
+  - `full_metrics` (method, line 410) `def full_metrics(em, qd, config)`
+  - `Visualizer` (class, line 419) `class Visualizer`
+  - `IsomorphismExperimentV2` (class, line 479) `class IsomorphismExperimentV2`
+  - `main` (method, line 658) `def main()`
+  - `create_logger` (method, line 94) `def create_logger(name, level)`
+  - `__init__` (method, line 107) `def __init__(self, channels, grid_size, imaginary_ratio)`
+  - `forward` (method, line 116) `def forward(self, x)`
+  - `__init__` (method, line 131) `def __init__(self, config, imaginary_ratio)`
+  - `forward` (method, line 147) `def forward(self, x)`
+  - `forward_spectral_only` (method, line 156) `def forward_spectral_only(self, x_expanded)`
+  - `__init__` (method, line 165) `def __init__(self, config)`
+  - `generate` (method, line 177) `def generate(self, l, m)`
+  - `_dipole` (method, line 183) `def _dipole(self, m)`
+  - `_multipole` (method, line 201) `def _multipole(self, l, m)`
+  - `_monopole` (method, line 212) `def _monopole(self)`
+  - `_pack` (method, line 218) `def _pack(self, Bx, By, Bz, scale)`
+  - `get_density` (method, line 227) `def get_density(self, l, m)`
+  - `__init__` (method, line 242) `def __init__(self, config)`
+  - `evolve` (method, line 246) `def evolve(self, source_6ch)`
+  - `__init__` (method, line 278) `def __init__(self, config)`
+  - `forward` (method, line 288) `def forward(self, x)`
+  - `__init__` (method, line 298) `def __init__(self, config)`
+  - `project_6ch` (method, line 302) `def project_6ch(self, tensor)`
+  - `project_energy` (method, line 316) `def project_energy(self, tensor)`
+  - `__init__` (method, line 325) `def __init__(self, config)`
+  - `radial_wavefunction` (method, line 329) `def radial_wavefunction(self, n, l, r)`
+  - `spherical_harmonic_real` (method, line 337) `def spherical_harmonic_real(self, l, m, theta, phi)`
+  - `density_2d` (method, line 344) `def density_2d(self, n, l, m, grid_size)`
+  - `sample_3d` (method, line 357) `def sample_3d(self, n, l, m, num)`
+  - `__init__` (method, line 421) `def __init__(self, config)`
+  - `render` (method, line 425) `def render(self, label, strategies, qd, orbital_3d, save_path)`
+  - `__init__` (method, line 489) `def __init__(self, config)`
+  - `_load_model` (method, line 499) `def _load_model(self, checkpoint_dir)`
+  - `run` (method, line 527) `def run(self, output_dir, checkpoint_dir)`
+  - `_analyze` (method, line 557) `def _analyze(self, model, n, l, m, label, output_dir)`
+  - `_summary` (method, line 591) `def _summary(self, results, info)`
+  - `_interpret` (method, line 624) `def _interpret(self, agg, p_agg)`
+  - `_print_summary` (method, line 646) `def _print_summary(self, s)`
+
+## maxwell_orbital_diagnostic.py
+- Doc: Layer-by-layer diagnostic for the Maxwell magnetic orbital isomorphism experiment.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `DiagnosticConfig` (class, line 47) `class DiagnosticConfig`
+  - `LoggerFactory` (class, line 80) `class LoggerFactory`
+  - `SpectralLayer` (class, line 94) `class SpectralLayer(Module)`
+  - `MaxwellSpectralNetwork` (class, line 128) `class MaxwellSpectralNetwork(Module)`
+  - `AnalyticalMultipoleSource` (class, line 182) `class AnalyticalMultipoleSource`
+  - `HallProjectionCalculator` (class, line 254) `class HallProjectionCalculator`
+  - `HydrogenOrbitalCalculator` (class, line 281) `class HydrogenOrbitalCalculator`
+  - `compute_spatial_correlation` (method, line 316) `def compute_spatial_correlation(a, b, eps)`
+  - `PassthroughTest` (class, line 324) `class PassthroughTest`
+  - `LayerTraceTest` (class, line 385) `class LayerTraceTest`
+  - `SymmetryTrainingTest` (class, line 499) `class SymmetryTrainingTest`
+  - `DiagnosticSuite` (class, line 596) `class DiagnosticSuite`
+  - `main` (method, line 625) `def main()`
+  - `create_logger` (method, line 83) `def create_logger(name, level)`
+  - `__init__` (method, line 96) `def __init__(self, channels, grid_size, imaginary_ratio)`
+  - `forward` (method, line 105) `def forward(self, x)`
+  - `init_identity` (method, line 117) `def init_identity(self, scale)`
+  - `__init__` (method, line 130) `def __init__(self, config, imaginary_ratio)`
+  - `forward` (method, line 146) `def forward(self, x)`
+  - `forward_with_intermediates` (method, line 155) `def forward_with_intermediates(self, x)`
+  - `init_identity` (method, line 167) `def init_identity(self)`
+  - `__init__` (method, line 184) `def __init__(self, config)`
+  - `generate` (method, line 196) `def generate(self, l, m)`
+  - `_dipole` (method, line 202) `def _dipole(self, m)`
+  - `_multipole` (method, line 220) `def _multipole(self, l, m)`
+  - `_monopole_proxy` (method, line 232) `def _monopole_proxy(self)`
+  - `_pack` (method, line 238) `def _pack(self, Bx, By, Bz, scale)`
+  - `get_analytical_density` (method, line 247) `def get_analytical_density(self, l, m)`
+  - `__init__` (method, line 256) `def __init__(self, config)`
+  - `project` (method, line 260) `def project(self, tensor)`
+  - `project_intermediate` (method, line 273) `def project_intermediate(self, tensor)`
+  - `__init__` (method, line 283) `def __init__(self, config)`
+  - `radial_wavefunction` (method, line 287) `def radial_wavefunction(self, n, l, r)`
+  - `spherical_harmonic_real` (method, line 295) `def spherical_harmonic_real(self, l, m, theta, phi)`
+  - `probability_density_2d` (method, line 302) `def probability_density_2d(self, n, l, m, grid_size)`
+  - `__init__` (method, line 330) `def __init__(self, config)`
+  - `run` (method, line 338) `def run(self, output_dir)`
+  - `__init__` (method, line 392) `def __init__(self, config)`
+  - `run` (method, line 400) `def run(self, checkpoint_dir, output_dir)`
+  - `_find_collapse` (method, line 436) `def _find_collapse(self, trace)`
+  - `_plot_traces` (method, line 448) `def _plot_traces(self, all_traces, output_dir)`
+  - `_load_model` (method, line 472) `def _load_model(self, checkpoint_dir)`
+  - `__init__` (method, line 507) `def __init__(self, config)`
+  - `compute_angular_power` (method, line 515) `def compute_angular_power(self, tensor)`
+  - `symmetry_loss` (method, line 522) `def symmetry_loss(self, input_tensor, output_tensor)`
+  - `run` (method, line 528) `def run(self, output_dir)`
+  - `_plot_history` (method, line 572) `def _plot_history(self, history, output_dir)`
+  - `__init__` (method, line 598) `def __init__(self, config)`
+  - `run_all` (method, line 606) `def run_all(self, output_dir, checkpoint_dir)`
+
